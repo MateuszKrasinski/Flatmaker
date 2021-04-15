@@ -1,3 +1,45 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+
+
+register:
+  path: /register
+  controller: App\Controller\UserController::register
+
+login:
+  path: /login
+  controller: App\Controller\UserController::login
+
+
+bills:
+  path: /bills
+  controller: App\Controller\BillController::getBills
+
+newBill:
+  path: /bills/new
+  controller: App\Controller\BillController::new
+
+deleteBill:
+  path: /bills/delete
+  controller: App\Controller\BillController::delete
+
+settleBill:
+  path: /bills/settle
+  controller: App\Controller\BillController::settle
+
+
+
+sharedFridge:
+  path: /sharedFridge
+  controller: App\Controller\SharedFridgeController::getItems
+
+newItem:
+  path: /sharedFridge/new
+  controller: App\Controller\SharedFridgeController::new
+
+deleteItem:
+  path: /sharedFridge/delete
+  controller: App\Controller\SharedFridgeController::delete
+
+settleItem:
+  path: /sharedFridge/return
+  controller: App\Controller\SharedFridgeController::return
+
