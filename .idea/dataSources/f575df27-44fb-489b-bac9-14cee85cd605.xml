@@ -1883,7 +1883,7 @@ true posixrules
     <database id="120" parent="1" name="d1r5r743kqtgjd">
       <ObjectId>7035331</ObjectId>
       <Owner>qdroiicbtgwbfc</Owner>
-      <IntrospectionStateNumber>25284416</IntrospectionStateNumber>
+      <IntrospectionStateNumber>25288420</IntrospectionStateNumber>
       <Current>1</Current>
     </database>
     <database id="121" parent="1" name="d1rinc3fm8gcvu">
@@ -18162,7 +18162,7 @@ UC/7035330
 </Acl>
       <StateNumber>20868734</StateNumber>
       <Owner>qdroiicbtgwbfc</Owner>
-      <IntrospectionStateNumber>25284419</IntrospectionStateNumber>
+      <IntrospectionStateNumber>25288423</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <extension id="3836" parent="120" name="plpgsql">
@@ -18296,68 +18296,79 @@ UC/7035330
       <StateNumber>25083435</StateNumber>
       <DataType>bigint|0s</DataType>
     </sequence>
-    <sequence id="3853" parent="3835" name="user_id_seq">
+    <sequence id="3853" parent="3835" name="user_details_id_seq">
+      <ObjectId>7757338</ObjectId>
+      <Owner>qdroiicbtgwbfc</Owner>
+      <StateNumber>25287307</StateNumber>
+      <DataType>bigint|0s</DataType>
+    </sequence>
+    <sequence id="3854" parent="3835" name="user_id_seq">
       <ObjectId>7686238</ObjectId>
       <Owner>qdroiicbtgwbfc</Owner>
       <StateNumber>25077295</StateNumber>
       <DataType>bigint|0s</DataType>
     </sequence>
-    <table id="3854" parent="3835" name="doctrine_migration_versions">
+    <table id="3855" parent="3835" name="doctrine_migration_versions">
       <ObjectId>7352647</ObjectId>
       <Owner>qdroiicbtgwbfc</Owner>
       <StateNumber>22903370</StateNumber>
     </table>
-    <table id="3855" parent="3835" name="group">
+    <table id="3856" parent="3835" name="group">
       <ObjectId>7686876</ObjectId>
       <Owner>qdroiicbtgwbfc</Owner>
       <StateNumber>25081767</StateNumber>
     </table>
-    <table id="3856" parent="3835" name="group_to_user">
+    <table id="3857" parent="3835" name="group_to_user">
       <ObjectId>7686781</ObjectId>
       <Owner>qdroiicbtgwbfc</Owner>
       <StateNumber>25081767</StateNumber>
     </table>
-    <table id="3857" parent="3835" name="help">
+    <table id="3858" parent="3835" name="help">
       <ObjectId>7687137</ObjectId>
       <Owner>qdroiicbtgwbfc</Owner>
       <StateNumber>25083435</StateNumber>
     </table>
-    <table id="3858" parent="3835" name="role">
+    <table id="3859" parent="3835" name="role">
       <ObjectId>7687304</ObjectId>
       <Owner>qdroiicbtgwbfc</Owner>
       <StateNumber>25083435</StateNumber>
     </table>
-    <table id="3859" parent="3835" name="type">
+    <table id="3860" parent="3835" name="type">
       <ObjectId>7687309</ObjectId>
       <Owner>qdroiicbtgwbfc</Owner>
       <StateNumber>25083435</StateNumber>
     </table>
-    <table id="3860" parent="3835" name="user">
+    <table id="3861" parent="3835" name="user">
       <ObjectId>7686240</ObjectId>
       <Owner>qdroiicbtgwbfc</Owner>
-      <StateNumber>25083435</StateNumber>
+      <StateNumber>25288289</StateNumber>
     </table>
-    <column id="3861" parent="3854" name="version">
+    <table id="3862" parent="3835" name="user_details">
+      <ObjectId>7757340</ObjectId>
+      <Owner>qdroiicbtgwbfc</Owner>
+      <StateNumber>25287307</StateNumber>
+    </table>
+    <column id="3863" parent="3855" name="version">
       <Position>1</Position>
       <DataType>varchar(191)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>22903370</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="3862" parent="3854" name="executed_at">
+    <column id="3864" parent="3855" name="executed_at">
       <Position>2</Position>
       <DataType>timestamp(0)|0s</DataType>
       <StateNumber>22903370</StateNumber>
       <DefaultExpression>NULL::timestamp without time zone</DefaultExpression>
       <TypeId>1114</TypeId>
     </column>
-    <column id="3863" parent="3854" name="execution_time">
+    <column id="3865" parent="3855" name="execution_time">
       <Position>3</Position>
       <DataType>integer|0s</DataType>
       <StateNumber>22903370</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <index id="3864" parent="3854" name="doctrine_migration_versions_pkey">
+    <index id="3866" parent="3855" name="doctrine_migration_versions_pkey">
       <ObjectId>7352651</ObjectId>
       <StateNumber>22903370</StateNumber>
       <ColNames>version</ColNames>
@@ -18368,35 +18379,35 @@ UC/7035330
       <CollationNames>default</CollationNames>
       <ClassIds>3126</ClassIds>
     </index>
-    <key id="3865" parent="3854" name="doctrine_migration_versions_pkey">
+    <key id="3867" parent="3855" name="doctrine_migration_versions_pkey">
       <ObjectId>7352652</ObjectId>
       <StateNumber>22903370</StateNumber>
       <ColNames>version</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>doctrine_migration_versions_pkey</UnderlyingIndexName>
     </key>
-    <column id="3866" parent="3855" name="id">
+    <column id="3868" parent="3856" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>25081767</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="3867" parent="3855" name="name">
+    <column id="3869" parent="3856" name="name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>25081767</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="3868" parent="3855" name="description">
+    <column id="3870" parent="3856" name="description">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>25081767</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="3869" parent="3855" name="group_pkey">
+    <index id="3871" parent="3856" name="group_pkey">
       <ObjectId>7686882</ObjectId>
       <StateNumber>25081767</StateNumber>
       <ColNames>id</ColNames>
@@ -18406,33 +18417,33 @@ UC/7035330
       <CollationIds>0</CollationIds>
       <ClassIds>1978</ClassIds>
     </index>
-    <key id="3870" parent="3855" name="group_pkey">
+    <key id="3872" parent="3856" name="group_pkey">
       <ObjectId>7686883</ObjectId>
       <StateNumber>25081767</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>group_pkey</UnderlyingIndexName>
     </key>
-    <column id="3871" parent="3856" name="id">
+    <column id="3873" parent="3857" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>25081152</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="3872" parent="3856" name="id_user_id">
+    <column id="3874" parent="3857" name="id_user_id">
       <Position>2</Position>
       <DataType>integer|0s</DataType>
       <StateNumber>25081152</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="3873" parent="3856" name="id_group_id">
+    <column id="3875" parent="3857" name="id_group_id">
       <Position>3</Position>
       <DataType>integer|0s</DataType>
       <StateNumber>25081767</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <index id="3874" parent="3856" name="group_to_user_pkey">
+    <index id="3876" parent="3857" name="group_to_user_pkey">
       <ObjectId>7686784</ObjectId>
       <StateNumber>25081152</StateNumber>
       <ColNames>id</ColNames>
@@ -18442,7 +18453,7 @@ UC/7035330
       <CollationIds>0</CollationIds>
       <ClassIds>1978</ClassIds>
     </index>
-    <index id="3875" parent="3856" name="idx_ec7d938a79f37ae5">
+    <index id="3877" parent="3857" name="idx_ec7d938a79f37ae5">
       <ObjectId>7686786</ObjectId>
       <StateNumber>25081152</StateNumber>
       <ColNames>id_user_id</ColNames>
@@ -18450,7 +18461,7 @@ UC/7035330
       <CollationIds>0</CollationIds>
       <ClassIds>1978</ClassIds>
     </index>
-    <index id="3876" parent="3856" name="idx_ec7d938aae8f35d2">
+    <index id="3878" parent="3857" name="idx_ec7d938aae8f35d2">
       <ObjectId>7686889</ObjectId>
       <StateNumber>25081767</StateNumber>
       <ColNames>id_group_id</ColNames>
@@ -18458,14 +18469,14 @@ UC/7035330
       <CollationIds>0</CollationIds>
       <ClassIds>1978</ClassIds>
     </index>
-    <key id="3877" parent="3856" name="group_to_user_pkey">
+    <key id="3879" parent="3857" name="group_to_user_pkey">
       <ObjectId>7686785</ObjectId>
       <StateNumber>25081152</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>group_to_user_pkey</UnderlyingIndexName>
     </key>
-    <foreign-key id="3878" parent="3856" name="fk_ec7d938a79f37ae5">
+    <foreign-key id="3880" parent="3857" name="fk_ec7d938a79f37ae5">
       <ObjectId>7686787</ObjectId>
       <StateNumber>25081152</StateNumber>
       <ColNames>id_user_id</ColNames>
@@ -18475,7 +18486,7 @@ UC/7035330
       <RefKeyName>user_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="3879" parent="3856" name="fk_ec7d938aae8f35d2">
+    <foreign-key id="3881" parent="3857" name="fk_ec7d938aae8f35d2">
       <ObjectId>7686884</ObjectId>
       <StateNumber>25081767</StateNumber>
       <ColNames>id_group_id</ColNames>
@@ -18485,39 +18496,32 @@ UC/7035330
       <RefKeyName>group_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="3880" parent="3857" name="id">
+    <column id="3882" parent="3858" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>25082516</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="3881" parent="3857" name="id_from_id">
+    <column id="3883" parent="3858" name="id_from_id">
       <Position>2</Position>
       <DataType>integer|0s</DataType>
       <StateNumber>25082516</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="3882" parent="3857" name="id_to_id">
+    <column id="3884" parent="3858" name="id_to_id">
       <Position>3</Position>
       <DataType>integer|0s</DataType>
       <StateNumber>25082516</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="3883" parent="3857" name="name">
-      <Position>4</Position>
-      <DataType>varchar(255)|0s</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>25082516</StateNumber>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="3884" parent="3857" name="id_type_id">
+    <column id="3885" parent="3858" name="id_type_id">
       <Position>5</Position>
       <DataType>integer|0s</DataType>
       <StateNumber>25083435</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <index id="3885" parent="3857" name="help_pkey">
+    <index id="3886" parent="3858" name="help_pkey">
       <ObjectId>7687140</ObjectId>
       <StateNumber>25082516</StateNumber>
       <ColNames>id</ColNames>
@@ -18527,7 +18531,7 @@ UC/7035330
       <CollationIds>0</CollationIds>
       <ClassIds>1978</ClassIds>
     </index>
-    <index id="3886" parent="3857" name="idx_8875caca653707b">
+    <index id="3887" parent="3858" name="idx_8875caca653707b">
       <ObjectId>7687142</ObjectId>
       <StateNumber>25082516</StateNumber>
       <ColNames>id_from_id</ColNames>
@@ -18535,7 +18539,7 @@ UC/7035330
       <CollationIds>0</CollationIds>
       <ClassIds>1978</ClassIds>
     </index>
-    <index id="3887" parent="3857" name="idx_8875cacdeb00b55">
+    <index id="3888" parent="3858" name="idx_8875cacdeb00b55">
       <ObjectId>7687143</ObjectId>
       <StateNumber>25082516</StateNumber>
       <ColNames>id_to_id</ColNames>
@@ -18543,7 +18547,7 @@ UC/7035330
       <CollationIds>0</CollationIds>
       <ClassIds>1978</ClassIds>
     </index>
-    <index id="3888" parent="3857" name="idx_8875cac1bd125e3">
+    <index id="3889" parent="3858" name="idx_8875cac1bd125e3">
       <ObjectId>7687319</ObjectId>
       <StateNumber>25083435</StateNumber>
       <ColNames>id_type_id</ColNames>
@@ -18551,14 +18555,14 @@ UC/7035330
       <CollationIds>0</CollationIds>
       <ClassIds>1978</ClassIds>
     </index>
-    <key id="3889" parent="3857" name="help_pkey">
+    <key id="3890" parent="3858" name="help_pkey">
       <ObjectId>7687141</ObjectId>
       <StateNumber>25082516</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>help_pkey</UnderlyingIndexName>
     </key>
-    <foreign-key id="3890" parent="3857" name="fk_8875caca653707b">
+    <foreign-key id="3891" parent="3858" name="fk_8875caca653707b">
       <ObjectId>7687144</ObjectId>
       <StateNumber>25082516</StateNumber>
       <ColNames>id_from_id</ColNames>
@@ -18568,7 +18572,7 @@ UC/7035330
       <RefKeyName>user_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="3891" parent="3857" name="fk_8875cacdeb00b55">
+    <foreign-key id="3892" parent="3858" name="fk_8875cacdeb00b55">
       <ObjectId>7687149</ObjectId>
       <StateNumber>25082516</StateNumber>
       <ColNames>id_to_id</ColNames>
@@ -18578,7 +18582,7 @@ UC/7035330
       <RefKeyName>user_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="3892" parent="3857" name="fk_8875cac1bd125e3">
+    <foreign-key id="3893" parent="3858" name="fk_8875cac1bd125e3">
       <ObjectId>7687314</ObjectId>
       <StateNumber>25083435</StateNumber>
       <ColNames>id_type_id</ColNames>
@@ -18588,21 +18592,21 @@ UC/7035330
       <RefKeyName>type_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="3893" parent="3858" name="id">
+    <column id="3894" parent="3859" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>25083435</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="3894" parent="3858" name="role">
+    <column id="3895" parent="3859" name="role">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>25083435</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="3895" parent="3858" name="role_pkey">
+    <index id="3896" parent="3859" name="role_pkey">
       <ObjectId>7687307</ObjectId>
       <StateNumber>25083435</StateNumber>
       <ColNames>id</ColNames>
@@ -18612,28 +18616,28 @@ UC/7035330
       <CollationIds>0</CollationIds>
       <ClassIds>1978</ClassIds>
     </index>
-    <key id="3896" parent="3858" name="role_pkey">
+    <key id="3897" parent="3859" name="role_pkey">
       <ObjectId>7687308</ObjectId>
       <StateNumber>25083435</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>role_pkey</UnderlyingIndexName>
     </key>
-    <column id="3897" parent="3859" name="id">
+    <column id="3898" parent="3860" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>25083435</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="3898" parent="3859" name="name">
+    <column id="3899" parent="3860" name="name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>25083435</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="3899" parent="3859" name="type_pkey">
+    <index id="3900" parent="3860" name="type_pkey">
       <ObjectId>7687312</ObjectId>
       <StateNumber>25083435</StateNumber>
       <ColNames>id</ColNames>
@@ -18643,41 +18647,54 @@ UC/7035330
       <CollationIds>0</CollationIds>
       <ClassIds>1978</ClassIds>
     </index>
-    <key id="3900" parent="3859" name="type_pkey">
+    <key id="3901" parent="3860" name="type_pkey">
       <ObjectId>7687313</ObjectId>
       <StateNumber>25083435</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>type_pkey</UnderlyingIndexName>
     </key>
-    <column id="3901" parent="3860" name="id">
+    <column id="3902" parent="3861" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>25077295</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="3902" parent="3860" name="id_details">
-      <Position>2</Position>
-      <DataType>integer|0s</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>25077295</StateNumber>
-      <TypeId>23</TypeId>
-    </column>
-    <column id="3903" parent="3860" name="name">
-      <Position>3</Position>
-      <DataType>varchar(255)|0s</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>25078602</StateNumber>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="3904" parent="3860" name="id_role_id">
+    <column id="3903" parent="3861" name="id_role_id">
       <Position>4</Position>
       <DataType>integer|0s</DataType>
       <StateNumber>25083435</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <index id="3905" parent="3860" name="user_pkey">
+    <column id="3904" parent="3861" name="id_user_id">
+      <Position>5</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>25287307</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="3905" parent="3861" name="email">
+      <Position>6</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>25288289</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="3906" parent="3861" name="password">
+      <Position>7</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>25288289</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="3907" parent="3861" name="created_at">
+      <Position>8</Position>
+      <DataType>timestamp(0)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>25288289</StateNumber>
+      <TypeId>1114</TypeId>
+    </column>
+    <index id="3908" parent="3861" name="user_pkey">
       <ObjectId>7686243</ObjectId>
       <StateNumber>25077295</StateNumber>
       <ColNames>id</ColNames>
@@ -18687,7 +18704,16 @@ UC/7035330
       <CollationIds>0</CollationIds>
       <ClassIds>1978</ClassIds>
     </index>
-    <index id="3906" parent="3860" name="idx_8d93d64989e8bdc">
+    <index id="3909" parent="3861" name="uniq_8d93d64979f37ae5">
+      <ObjectId>7757353</ObjectId>
+      <StateNumber>25287307</StateNumber>
+      <ColNames>id_user_id</ColNames>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationIds>0</CollationIds>
+      <ClassIds>1978</ClassIds>
+    </index>
+    <index id="3910" parent="3861" name="idx_8d93d64989e8bdc">
       <ObjectId>7687325</ObjectId>
       <StateNumber>25083435</StateNumber>
       <ColNames>id_role_id</ColNames>
@@ -18695,14 +18721,14 @@ UC/7035330
       <CollationIds>0</CollationIds>
       <ClassIds>1978</ClassIds>
     </index>
-    <key id="3907" parent="3860" name="user_pkey">
+    <key id="3911" parent="3861" name="user_pkey">
       <ObjectId>7686244</ObjectId>
       <StateNumber>25077295</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>user_pkey</UnderlyingIndexName>
     </key>
-    <foreign-key id="3908" parent="3860" name="fk_8d93d64989e8bdc">
+    <foreign-key id="3912" parent="3861" name="fk_8d93d64989e8bdc">
       <ObjectId>7687320</ObjectId>
       <StateNumber>25083435</StateNumber>
       <ColNames>id_role_id</ColNames>
@@ -18712,5 +18738,60 @@ UC/7035330
       <RefKeyName>role_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
+    <foreign-key id="3913" parent="3861" name="fk_8d93d64979f37ae5">
+      <ObjectId>7757348</ObjectId>
+      <StateNumber>25287307</StateNumber>
+      <ColNames>id_user_id</ColNames>
+      <RefTableId>7757340</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>user_details</RefTableName>
+      <RefKeyName>user_details_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="3914" parent="3862" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>25287307</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="3915" parent="3862" name="name">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>25287307</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="3916" parent="3862" name="surname">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>25287307</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="3917" parent="3862" name="phone">
+      <Position>4</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>25287307</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="3918" parent="3862" name="user_details_pkey">
+      <ObjectId>7757346</ObjectId>
+      <StateNumber>25287307</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationIds>0</CollationIds>
+      <ClassIds>1978</ClassIds>
+    </index>
+    <key id="3919" parent="3862" name="user_details_pkey">
+      <ObjectId>7757347</ObjectId>
+      <StateNumber>25287307</StateNumber>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>user_details_pkey</UnderlyingIndexName>
+    </key>
   </database-model>
 </dataSource>

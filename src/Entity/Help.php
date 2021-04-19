@@ -17,10 +17,6 @@ class Help
      */
     private $id;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $name;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="relation_")
@@ -42,17 +38,7 @@ class Help
         return $this->id;
     }
 
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
 
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
-    }
 
     public function getIdFrom(): ?User
     {

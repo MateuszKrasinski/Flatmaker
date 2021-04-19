@@ -20,35 +20,31 @@ class User
      */
     private $id;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $id_details;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $name;
-
-    /**
-     * @ORM\OneToMany(targetEntity=grouptouser::class, mappedBy="id_user")
-     */
-    private $relation;
-
-    /**
-     * @ORM\OneToMany(targetEntity=help::class, mappedBy="id_from")
-     */
-    private $relation_;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Help::class, mappedBy="id_to")
-     */
-    private $relation__;
 
     /**
      * @ORM\ManyToOne(targetEntity=Role::class, inversedBy="relation")
      */
     private $id_role;
+
+    /**
+     * @ORM\OneToOne(targetEntity=userDetails::class, cascade={"persist", "remove"})
+     */
+    private $id_user;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $email;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $password;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $created_at;
 
     public function __construct()
     {
@@ -62,29 +58,6 @@ class User
         return $this->id;
     }
 
-    public function getIdDetails(): ?int
-    {
-        return $this->id_details;
-    }
-
-    public function setIdDetails(int $id_details): self
-    {
-        $this->id_details = $id_details;
-
-        return $this;
-    }
-
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
-    }
 
     /**
      * @return Collection|grouptouser[]
@@ -124,6 +97,54 @@ class User
     public function setIdRole(?Role $id_role): self
     {
         $this->id_role = $id_role;
+
+        return $this;
+    }
+
+    public function getIdUser(): ?userDetails
+    {
+        return $this->id_user;
+    }
+
+    public function setIdUser(?userDetails $id_user): self
+    {
+        $this->id_user = $id_user;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function getPassword(): ?string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->created_at;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $created_at): self
+    {
+        $this->created_at = $created_at;
 
         return $this;
     }
