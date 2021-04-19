@@ -2,16 +2,16 @@
 
 namespace App\Entity;
 
-use App\Repository\UserRepository;
+use App\Repository\GroupRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=UserRepository::class)
- * @ORM\Table(name="`user`")
+ * @ORM\Entity(repositoryClass=GroupRepository::class)
+ * @ORM\Table(name="`group`")
  */
-class User
+class Group
 {
     /**
      * @ORM\Id
@@ -21,57 +21,28 @@ class User
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $id_details;
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity=grouptouser::class, mappedBy="id_user")
+     * @ORM\OneToMany(targetEntity=grouptouser::class, mappedBy="id_group")
      */
     private $relation;
 
     /**
-     * @ORM\OneToMany(targetEntity=help::class, mappedBy="id_from")
+     * @ORM\Column(type="string", length=255)
      */
-    private $relation_;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Help::class, mappedBy="id_to")
-     */
-    private $relation__;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Role::class, inversedBy="relation")
-     */
-    private $id_role;
+    private $description;
 
     public function __construct()
     {
         $this->relation = new ArrayCollection();
-        $this->relation_ = new ArrayCollection();
-        $this->relation__ = new ArrayCollection();
     }
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getIdDetails(): ?int
-    {
-        return $this->id_details;
-    }
-
-    public function setIdDetails(int $id_details): self
-    {
-        $this->id_details = $id_details;
-
-        return $this;
     }
 
     public function getName(): ?string
@@ -98,7 +69,7 @@ class User
     {
         if (!$this->relation->contains($relation)) {
             $this->relation[] = $relation;
-            $relation->setIdUser($this);
+            $relation->setIdGroup($this);
         }
 
         return $this;
@@ -108,22 +79,22 @@ class User
     {
         if ($this->relation->removeElement($relation)) {
             // set the owning side to null (unless already changed)
-            if ($relation->getIdUser() === $this) {
-                $relation->setIdUser(null);
+            if ($relation->getIdGroup() === $this) {
+                $relation->setIdGroup(null);
             }
         }
 
         return $this;
     }
 
-    public function getIdRole(): ?Role
+    public function getDescription(): ?string
     {
-        return $this->id_role;
+        return $this->description;
     }
 
-    public function setIdRole(?Role $id_role): self
+    public function setDescription(string $description): self
     {
-        $this->id_role = $id_role;
+        $this->description = $description;
 
         return $this;
     }
