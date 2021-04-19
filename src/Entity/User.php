@@ -27,7 +27,7 @@ class User
     private $id_role;
 
     /**
-     * @ORM\OneToOne(targetEntity=userDetails::class, cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=UserDetails::class, cascade={"persist", "remove"})
      */
     private $id_user;
 
@@ -101,12 +101,12 @@ class User
         return $this;
     }
 
-    public function getIdUser(): ?userDetails
+    public function getIdUser(): ?UserDetails
     {
         return $this->id_user;
     }
 
-    public function setIdUser(?userDetails $id_user): self
+    public function setIdUser(?UserDetails $id_user): self
     {
         $this->id_user = $id_user;
 
