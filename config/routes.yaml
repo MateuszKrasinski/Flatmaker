@@ -2,7 +2,7 @@
 
 register:
   path: /register
-  controller: App\Controller\UserController::register
+  controller: App\Controller\UserController::createUser
 
 login:
   path: /login
