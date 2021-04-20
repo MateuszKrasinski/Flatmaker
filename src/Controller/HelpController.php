@@ -52,6 +52,29 @@ class HelpController extends AbstractController
 
         return $this->render('help/index.html.twig', [
             'json' => $help,
+            'message'=>'Created new Help'
+        ]);
+
+    }
+    public function getHelps($id_group=23): Response
+    {
+        $repositoryHelp= $this->getDoctrine()->getRepository(Help::class);
+        $helps = $repositoryHelp->findBy(['id_group'=>$id_group]);
+        $allHelps = [];
+        foreach ($helps as $help){
+            $help->getIdGroup()->getRelation();
+            $help->getIdType()->getRelation();
+            $help->getIdFrom()->getRelation();
+            $help->getIdFrom()->getIdRole()->getRelation();
+            $help->getIdFrom()->getIdUser()->getRelation();
+            $help->getIdTo()->getIdUser()->getRelation();
+            $help->getIdTo()->getIdRole()->getRelation();
+            $help->getIdTo()->getIdUser()->getRelation();
+            array_push($allHelps, $help);
+        }
+        return $this->render('help/index.html.twig', [
+            'json' => $allHelps,
+            'message'=>'Got all helps to group'
         ]);
 
     }

@@ -14,6 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserController extends AbstractController
 {
     private $session;
+
     /**
      * @Route("/user", name="user")
      */
@@ -23,6 +24,7 @@ class UserController extends AbstractController
             'controller_name' => 'UserController',
         ]);
     }
+
     public function createUser(): Response
     {
         // you can fetch the EntityManager via $this->getDoctrine()
@@ -50,17 +52,18 @@ class UserController extends AbstractController
         $entityManager->persist($user);
         $entityManager->flush();
 
-        return new Response('Saved new user with id '.$user->getId());
+        return $this->render('user/index.html.twig',
+            ['json' => $user,
+                'message' => 'Created new user']
+        );
 
 
     }
 
     public function login(): Response
     {
-        $repositoryUserDetail = $this->getDoctrine()->getRepository(UserDetails::class);
         $repositoryUser = $this->getDoctrine()->getRepository(User::class);
-        $repositoryRole = $this->getDoctrine()->getRepository(Role::class);
-        $user = $repositoryUser->findOneBy(['email' => 'mail@gmail.com', 'password'=>'password1',]);
+        $user = $repositoryUser->findOneBy(['email' => 'mail@gmail.com', 'password' => 'password1',]);
         $user->getIdRole()->getRelation();
         $user->getIdUser()->getRelation();
 
@@ -68,7 +71,8 @@ class UserController extends AbstractController
             return new Response('Try again email/password: ');
         }
         return $this->render('user/index.html.twig',
-            ['json' => $user]
+            ['json' => $user,
+                'message'=>'Login accepted']
         );
     }
 }

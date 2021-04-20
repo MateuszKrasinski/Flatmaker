@@ -40,7 +40,10 @@ class GroupController extends AbstractController
         $entityManager->persist($groupToUser);
 
         $entityManager->flush();
-        return $this->json(['content' => 'newGroup', 'group_id' => $group->getId()]);
+        return $this->render('group/index.html.twig', [
+            'json' => $group,
+            'message' => 'Created new group',
+        ]);
     }
 
     public function getGroup($id_group = 1): Response
@@ -56,31 +59,28 @@ class GroupController extends AbstractController
         foreach ($participants as $participant){
             array_push($result, $participant->getIdUser());
         }
-        if ($participants) {
-            return $this->render('group/index.html.twig',
-                ['json' => ['id' => $group, 'participants' => $result,]]
-            );
-        } else
-            return $this->json(['message' => 'No participants']);
+        return $this->render('group/index.html.twig', [
+            'json' => $group,
+            'json2' => $result,
+            'message' => 'Created new group',
+        ]);
     }
 
-    public function getGroups($id_group = 1): Response
+    public function getGroups(): Response
     {
-        $repositoryUser = $this->getDoctrine()->getRepository(User::class);
         $repositoryGroup = $this->getDoctrine()->getRepository(Group::class);
         $repositoryGroupToUser = $this->getDoctrine()->getRepository(GroupToUser::class);
-        $entityManager = $this->getDoctrine()->getManager();
 
         $result = [];
         $groups = $repositoryGroup->findAll();
         foreach ($groups as $group) {
             $participants = $repositoryGroupToUser->findBy(['id_group' => $group->getId()]);
-            array_push($result, ['json' => ['id' => $group->getId(), 'name' => $group->getName(),
-                'desc' => $group->getDescription(), 'participants' => $participants,]]);
+            array_push($result, ['json' => ['group'=>$group,'participants'=>$participants]]);
 
         }
         return $this->render('group/index.html.twig',
-            ['json' => $result]
+            ['json' => $result,
+                'message'=>'Got all grups']
         );
     }
 }
