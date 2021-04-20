@@ -33,6 +33,11 @@ class Help
      */
     private $id_type;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Group::class, inversedBy="helps")
+     */
+    private $id_group;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -72,6 +77,18 @@ class Help
     public function setIdType(?Type $id_type): self
     {
         $this->id_type = $id_type;
+
+        return $this;
+    }
+
+    public function getIdGroup(): ?Group
+    {
+        return $this->id_group;
+    }
+
+    public function setIdGroup(?Group $id_group): self
+    {
+        $this->id_group= $id_group;
 
         return $this;
     }

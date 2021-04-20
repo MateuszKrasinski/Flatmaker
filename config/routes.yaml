@@ -19,3 +19,7 @@ group:
 groupss:
   path: /groups/
   controller: App\Controller\GroupController::getGroups
+
+help:
+  path: /groups/id/help/
+  controller: App\Controller\HelpController::createHelp

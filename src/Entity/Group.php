@@ -35,9 +35,15 @@ class Group
      */
     private $description;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Help::class, mappedBy="id_group")
+     */
+    private $helps;
+
     public function __construct()
     {
         $this->relation = new ArrayCollection();
+        $this->helps = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -95,6 +101,36 @@ class Group
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Help[]
+     */
+    public function getHelps(): Collection
+    {
+        return $this->helps;
+    }
+
+    public function addHelp(Help $help): self
+    {
+        if (!$this->helps->contains($help)) {
+            $this->helps[] = $help;
+            $help->setRelation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeHelp(Help $help): self
+    {
+        if ($this->helps->removeElement($help)) {
+            // set the owning side to null (unless already changed)
+            if ($help->getRelation() === $this) {
+                $help->setRelation(null);
+            }
+        }
 
         return $this;
     }
