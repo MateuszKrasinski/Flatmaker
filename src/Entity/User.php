@@ -22,6 +22,11 @@ class User
 
 
     /**
+     * @ORM\OneToMany(targetEntity=GroupToUser::class, mappedBy="id_user")
+     */
+    private $relation;
+
+    /**
      * @ORM\ManyToOne(targetEntity=Role::class, inversedBy="relation")
      */
     private $id_role;

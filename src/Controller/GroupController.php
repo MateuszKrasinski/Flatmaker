@@ -9,6 +9,7 @@ use App\Repository\GroupRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 
 class GroupController extends AbstractController
 {
@@ -23,19 +24,40 @@ class GroupController extends AbstractController
         ]);
     }
 
-    public function createGroup($id_user = 2, $name = "group", $desc = 'Opis'): Response
+    public function createGroup($id_user = 2, $name = "group2", $desc = 'Opis3'): Response
     {
-        $repository = $this->getDoctrine()->getRepository(User::class);
-        $user = $repository->find($id_user);
         $entityManager = $this->getDoctrine()->getManager();
         $group = new Group();
         $group->setName("Group1");
         $group->setDescription("Description");
-        $entityManager->persist($group);
-        $entityManager->flush();
+        $repositoryUser = $this->getDoctrine()->getRepository(User::class);
+        $user = $repositoryUser->find($id_user);
         $groupToUser = new GroupToUser();
-        $groupToUser->setIdUser($user);
-        $groupToUser->setIdGroup($group);
-        return new Response('Saved new group with id' . $group->getId());
+
+        $user->addRelation($groupToUser);
+        $group->addRelation($groupToUser);
+        $entityManager->persist($group);
+        $entityManager->persist($groupToUser);
+
+        $entityManager->flush();
+        return $this->json(['content' => 'newGroup', 'group_id' => $group->getId()]);
+    }
+
+    public function getGroup($id_group = 1): Response
+    {
+        $repositoryUser = $this->getDoctrine()->getRepository(User::class);
+        $repositoryGroup = $this->getDoctrine()->getRepository(Group::class);
+        $repositoryGroupToUser = $this->getDoctrine()->getRepository(GroupToUser::class);
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $group = $repositoryGroup->find(21);
+        $participants = $repositoryGroupToUser->findBy(['id_group' => 21]);
+        if ($participants) {
+            return $this->render('group/index.html.twig',
+                ['json'=>[ 'id' => $group->getId(), 'name' => $group->getName(),
+                    'desc' => $group->getDescription(),'participants' => $participants,]]
+            );
+        } else
+            return $this->json(['message' => 'No participants']);
     }
 }

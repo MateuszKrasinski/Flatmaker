@@ -11,3 +11,7 @@ login:
 groups:
   path: /groups/new
   controller: App\Controller\GroupController::createGroup
+
+group:
+  path: /groups/getGroup
+  controller: App\Controller\GroupController::getGroup
