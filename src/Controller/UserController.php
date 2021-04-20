@@ -8,10 +8,12 @@ use App\Entity\UserDetails;
 use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 
 class UserController extends AbstractController
 {
+    private $session;
     /**
      * @Route("/user", name="user")
      */
@@ -60,6 +62,7 @@ class UserController extends AbstractController
         if (!$user) {
             return new Response('Try again email/password: ');
         }
+
         return new Response('Logged user with id: '.$user->getId());
     }
 }

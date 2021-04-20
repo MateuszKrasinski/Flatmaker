@@ -26,7 +26,7 @@ class Group
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity=grouptouser::class, mappedBy="id_group")
+     * @ORM\OneToMany(targetEntity=GroupToUser::class, mappedBy="id_group")
      */
     private $relation;
 
