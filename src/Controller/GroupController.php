@@ -54,10 +54,30 @@ class GroupController extends AbstractController
         $participants = $repositoryGroupToUser->findBy(['id_group' => 21]);
         if ($participants) {
             return $this->render('group/index.html.twig',
-                ['json'=>[ 'id' => $group->getId(), 'name' => $group->getName(),
-                    'desc' => $group->getDescription(),'participants' => $participants,]]
+                ['json' => ['id' => $group->getId(), 'name' => $group->getName(),
+                    'desc' => $group->getDescription(), 'participants' => $participants,]]
             );
         } else
             return $this->json(['message' => 'No participants']);
+    }
+
+    public function getGroups($id_group = 1): Response
+    {
+        $repositoryUser = $this->getDoctrine()->getRepository(User::class);
+        $repositoryGroup = $this->getDoctrine()->getRepository(Group::class);
+        $repositoryGroupToUser = $this->getDoctrine()->getRepository(GroupToUser::class);
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $result = [];
+        $groups = $repositoryGroup->findAll();
+        foreach ($groups as $group) {
+            $participants = $repositoryGroupToUser->findBy(['id_group' => $group->getId()]);
+            array_push($result, ['json' => ['id' => $group->getId(), 'name' => $group->getName(),
+                'desc' => $group->getDescription(), 'participants' => $participants,]]);
+
+        }
+        return $this->render('group/index.html.twig',
+            ['json' => $result]
+        );
     }
 }

@@ -15,3 +15,7 @@ groups:
 group:
   path: /groups/getGroup
   controller: App\Controller\GroupController::getGroup
+
+groupss:
+  path: /groups/
+  controller: App\Controller\GroupController::getGroups
