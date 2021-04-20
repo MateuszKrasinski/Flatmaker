@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\UserDetailsRepository;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -32,6 +33,10 @@ class UserDetails
      */
     private $phone;
 
+    /**
+     * @ORM\OneToMany(targetEntity=User::class, mappedBy="id_user")
+     */
+    private $relation;
     public function getId(): ?int
     {
         return $this->id;
@@ -72,4 +77,34 @@ class UserDetails
 
         return $this;
     }
+    /**
+     * @return Collection|User[]
+     */
+    public function getRelation(): Collection
+    {
+        return $this->relation;
+    }
+
+    public function addRelation(User $relation): self
+    {
+        if (!$this->relation->contains($relation)) {
+            $this->relation[] = $relation;
+            $relation->setIdUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRelation(User $relation): self
+    {
+        if ($this->relation->removeElement($relation)) {
+            // set the owning side to null (unless already changed)
+            if ($relation->getIdUser() === $this) {
+                $relation->setIdUser(null);
+            }
+        }
+
+        return $this;
+    }
+
 }

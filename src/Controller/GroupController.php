@@ -52,10 +52,13 @@ class GroupController extends AbstractController
 
         $group = $repositoryGroup->find(21);
         $participants = $repositoryGroupToUser->findBy(['id_group' => 21]);
+        $result = [];
+        foreach ($participants as $participant){
+            array_push($result, $participant->getIdUser());
+        }
         if ($participants) {
             return $this->render('group/index.html.twig',
-                ['json' => ['id' => $group->getId(), 'name' => $group->getName(),
-                    'desc' => $group->getDescription(), 'participants' => $participants,]]
+                ['json' => ['id' => $group, 'participants' => $result,]]
             );
         } else
             return $this->json(['message' => 'No participants']);
