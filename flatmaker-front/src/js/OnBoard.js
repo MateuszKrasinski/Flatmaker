@@ -6,7 +6,6 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faBars, faHome} from '@fortawesome/free-solid-svg-icons'
 
 
-
 function Logo() {
     return <img className={"logo"} src={logo2} alt="logo"/>
 }
@@ -22,7 +21,6 @@ function HouseIcon() {
 const topBar = (
     <div className={"top-nav"}>
         <Logo/>
-        <HamburgerIcon/>
     </div>
 )
 
@@ -40,7 +38,7 @@ function OnBoardHeader() {
 }
 
 function Buttons() {
-    return(
+    return (
         <div className={"button-container"}>
             <button>Login</button>
             <button>Sign up</button>
@@ -50,16 +48,28 @@ function Buttons() {
 
 }
 
+function rightBar() {
+    return (<div className={"right-nav"}>
+        <ul>
+            <li>xD</li>
+        </ul>
+    </div>)
+}
+
 function OnBoard() {
     return (
-        <div>
-            <nav>
-                {topBar}
-            </nav>
-            <main>
-                <OnBoardHeader/>
-            </main>
+        <div className={"content-container"}>
+            <div>
+                <nav>
+                    {topBar}
+                </nav>
+                <main>
+                    <OnBoardHeader/>
+                </main>
+            </div>
+                {rightBar()}
         </div>
+
     );
 }
 
