@@ -72,7 +72,6 @@ class UserController extends AbstractController
         }
         return $this->render('user/index.html.twig',
             ['json' => $user,
-                'message'=>'Login accepted']
-g        );
+                'message'=>'Login accepted']);
     }
 }

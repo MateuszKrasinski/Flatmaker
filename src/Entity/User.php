@@ -7,8 +7,13 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 /**
- * @ApiResource()
+ * @ApiResource(
+ * normalizationContext={"groups"={"user:read"},"swagger_definition_name"="Read"},
+ * denormalizationContext={"groups"={"user:write"},"swagger_definition_name"="Write"}
+ * )
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @ORM\Table(name="`user`")
  */
@@ -18,6 +23,8 @@ class User
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"user:read","group_to_user:read", "help:read"})
+     *
      */
     private $id;
 
@@ -26,29 +33,43 @@ class User
      * @ORM\OneToMany(targetEntity=GroupToUser::class, mappedBy="id_user")
      */
     private $relation;
-
+    /**
+     * @ORM\OneToMany(targetEntity=Help::class, mappedBy="id_user")
+     */
+    private $relation_;
+    /**
+     * @ORM\OneToMany(targetEntity=Help::class, mappedBy="id_user")
+     */
+    private $relation1;
     /**
      * @ORM\ManyToOne(targetEntity=Role::class, inversedBy="relation")
+     * @Groups({"user:read","group_to_user:read", "help:read"})
      */
+
     private $id_role;
 
     /**
      * @ORM\OneToOne(targetEntity=UserDetails::class, cascade={"persist", "remove"})
+     *  @Groups({"user:read","group_to_user:read", "help:read"})
      */
     private $id_user;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"user:read","group_to_user:read", "help:read"})
+     *
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"user:read"})
      */
     private $password;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"user:read","group_to_user:read", "help:read"})
      */
     private $created_at;
 
@@ -110,6 +131,7 @@ class User
     public function getIdUser(): ?UserDetails
     {
         return $this->id_user;
+//        return $this->id_user->getRelation();
     }
 
     public function setIdUser(?UserDetails $id_user): self

@@ -2,10 +2,16 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\HelpRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
+ * @ApiResource(
+ * normalizationContext={"groups"={"help:read"},"swagger_definition_name"="Read"},
+ * denormalizationContext={"groups"={"help:write"},"swagger_definition_name"="Write"}
+ * )
  * @ORM\Entity(repositoryClass=HelpRepository::class)
  */
 class Help
@@ -20,21 +26,25 @@ class Help
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="relation_")
+     * @Groups({"help:read"})
      */
     private $id_from;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="relation1")
+     * @Groups({"help:read"})
      */
     private $id_to;
 
     /**
      * @ORM\ManyToOne(targetEntity=Type::class, inversedBy="relation")
+     * @Groups({"help:read"})
      */
     private $id_type;
 
     /**
      * @ORM\ManyToOne(targetEntity=Group::class, inversedBy="helps")
+     *
      */
     private $id_group;
 
@@ -83,7 +93,7 @@ class Help
 
     public function getIdGroup(): ?Group
     {
-        return $this->id_group;
+        return $this->id_group->getRelation();
     }
 
     public function setIdGroup(?Group $id_group): self

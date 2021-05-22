@@ -2,11 +2,17 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\UserDetailsRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
+ * * @ApiResource(
+ * normalizationContext={"groups"={"role:read"},"swagger_definition_name"="Read"},
+ * denormalizationContext={"groups"={"role:write"},"swagger_definition_name"="Write"}
+ * )
  * @ORM\Entity(repositoryClass=UserDetailsRepository::class)
  */
 class UserDetails
@@ -20,16 +26,19 @@ class UserDetails
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"user_details:read", "user:read","group_to_user:read","help:read"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"user_details:read", "user:read","group_to_user:read","help:read"})
      */
     private $surname;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"user_details:read", "user:read","group_to_user:read","help:read"})
      */
     private $phone;
 
