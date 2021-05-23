@@ -34,6 +34,7 @@ class Group
 
     /**
      * @ORM\OneToMany(targetEntity=GroupToUser::class, mappedBy="id_group")
+     * @Groups({"group:read"})
      */
     private $relation;
 

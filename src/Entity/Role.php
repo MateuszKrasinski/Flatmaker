@@ -28,7 +28,7 @@ class Role
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"role:read", "user:read","group_to_user:read","help:read"})
+     * @Groups({"role:read", "user:read","group_to_user:read","help:read","group:read"})
      */
     private $role;
 

@@ -26,19 +26,19 @@ class UserDetails
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"user_details:read", "user:read","group_to_user:read","help:read"})
+     * @Groups({"user_details:read", "user:read","group_to_user:read","help:read","group:read"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"user_details:read", "user:read","group_to_user:read","help:read"})
+     * @Groups({"user_details:read", "user:read","group_to_user:read","help:read","group:read"})
      */
     private $surname;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"user_details:read", "user:read","group_to_user:read","help:read"})
+     * @Groups({"user_details:read", "user:read","group_to_user:read","help:read","group:read"})
      */
     private $phone;
 

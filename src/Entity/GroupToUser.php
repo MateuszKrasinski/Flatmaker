@@ -26,12 +26,13 @@ class GroupToUser
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="relation")
-     * @Groups({"group_to_user:read"})
+     * @Groups({"group_to_user:read","group:read"})
      */
     private $id_user;
 
     /**
      * @ORM\ManyToOne(targetEntity=Group::class, inversedBy="relation")
+     *
      */
     private $id_group;
 

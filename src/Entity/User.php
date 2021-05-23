@@ -23,7 +23,7 @@ class User
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"user:read","group_to_user:read", "help:read"})
+     * @Groups({"user:read","group_to_user:read", "help:read","group:read"})
      *
      */
     private $id;
@@ -43,20 +43,20 @@ class User
     private $relation1;
     /**
      * @ORM\ManyToOne(targetEntity=Role::class, inversedBy="relation")
-     * @Groups({"user:read","group_to_user:read", "help:read"})
+     * @Groups({"user:read","group_to_user:read", "help:read","group:read"})
      */
 
     private $id_role;
 
     /**
      * @ORM\OneToOne(targetEntity=UserDetails::class, cascade={"persist", "remove"})
-     *  @Groups({"user:read","group_to_user:read", "help:read"})
+     *  @Groups({"user:read","group_to_user:read", "help:read","group:read"})
      */
     private $id_user;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"user:read","group_to_user:read", "help:read"})
+     * @Groups({"user:read","group_to_user:read", "help:read","group:read"})
      *
      */
     private $email;

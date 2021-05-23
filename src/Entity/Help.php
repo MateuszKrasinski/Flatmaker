@@ -26,19 +26,19 @@ class Help
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="relation_")
-     * @Groups({"help:read"})
+     * @Groups({"help:read","group:read"})
      */
     private $id_from;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="relation1")
-     * @Groups({"help:read"})
+     * @Groups({"help:read","group:read"})
      */
     private $id_to;
 
     /**
      * @ORM\ManyToOne(targetEntity=Type::class, inversedBy="relation")
-     * @Groups({"help:read"})
+     * @Groups({"help:read","group:read"})
      */
     private $id_type;
 
