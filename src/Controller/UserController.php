@@ -7,13 +7,22 @@ use App\Entity\User;
 use App\Entity\UserDetails;
 use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\SecurityBundle\SecurityBundle;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class UserController extends AbstractController
 {
     private $session;
+    private $security;
+
+    public function __construct()
+    {
+        $this->security =  new SecurityBundle();
+    }
 
     /**
      * @Route("/user", name="user")
@@ -60,18 +69,21 @@ class UserController extends AbstractController
 
     }
 
-    public function login(): Response
+    public function login(AuthenticationUtils $authenticationUtils): Response
     {
+        // get the login error if there is one
+        $error = $authenticationUtils->getLastAuthenticationError();
+        // last username entered by the user
+        $lastUsername = $authenticationUtils->getLastUsername();
         $repositoryUser = $this->getDoctrine()->getRepository(User::class);
         $user = $repositoryUser->findOneBy(['email' => 'mail@gmail.com', 'password' => 'password1',]);
-        $user->getIdRole()->getRelation();
-        $user->getIdUser()->getRelation();
 
         if (!$user) {
             return new Response('Try again email/password: ');
         }
         return $this->render('user/index.html.twig',
             ['json' => $user,
-                'message'=>'Login accepted']);
+                'last_username' => $lastUsername,
+                'error'         => $error,]);
     }
 }
