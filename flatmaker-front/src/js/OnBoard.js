@@ -5,8 +5,9 @@ import '../css/index.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faBars, faHome} from '@fortawesome/free-solid-svg-icons'
 import axios from "axios";
-
-
+import {withRouter} from 'react-router-dom';
+import { Link } from 'react-router-dom'
+import {useHistory} from "react-router";
 function Logo() {
     return <img className={"logo"} src={logo2} alt="logo"/>
 }
@@ -39,10 +40,11 @@ function OnBoardHeader() {
 }
 
 function Buttons() {
+    const history = useHistory();
     return (
         <div className={"button-container"}>
-            <button>Login</button>
-            <button>Sign up</button>
+            <button onClick={() => history.push('/login') }>Login</button>
+            <button onClick={() => history.push('/register') }>Sign up</button>
 
         </div>
     )

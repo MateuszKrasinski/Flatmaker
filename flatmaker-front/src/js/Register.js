@@ -4,12 +4,11 @@ import '../css/App.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faBars, faHome} from '@fortawesome/free-solid-svg-icons'
 import {useHistory} from "react-router";
-import axios from "axios";
-import { Link } from "react-router-dom";
+
 
 
 function Logo() {
-    return <img  className={"logo"} src={logo2} alt="logo"/>
+    return <img className={"logo"} src={logo2} alt="logo"/>
 }
 
 function HamburgerIcon() {
@@ -22,39 +21,31 @@ function HouseIcon() {
 
 const topBar = (
     <div className={"top-nav"}>
-        <Link to={"/"}>
-            <Logo/>
-        </Link>
+        <Logo/>
         <HamburgerIcon/>
     </div>
 )
-function loginFunction(){
-    let variable={
-        "email": "string",
-        "password":'1234',
-    };
-    {axios.post("https://127.0.0.1:8000/login",variable).then(r =>console.log(r) )}
-}
-function Login(){
+
+function Register(){
     const history = useHistory();
     return (
         <div className={"login-container"}>
             <div className={"option-container"}>
-                <a  onClick={() => history.push('/login') } className={"chosen"}>login</a>
-                <a onClick={() => history.push('/register') }>signup</a>
+                <a  onClick={() => history.push('/login') } >login</a>
+                <a onClick={() => history.push('/register') } className={"chosen"}>signup</a>
             </div>
             <div className={"input-container"}>
                 <input placeholder={"email"} type="text"/>
                 <input placeholder={"password"} type="text"/>
+                <input placeholder={"again password"} type="text"/>
             </div>
             <div className={"button-container"}>
-                <button onClick={loginFunction}>login</button>
+                <button>sign up</button>
             </div>
 
         </div>
     )
 }
-
 
 function OnBoard() {
     return (
@@ -63,7 +54,7 @@ function OnBoard() {
                 {topBar}
             </nav>
             <main>
-                <Login/>
+                <Register/>
             </main>
 
         </div>

@@ -8,6 +8,7 @@ import OnBoard from "./js/OnBoard";
 import Login from './js/Login.js';
 import SharedFridge from "./js/SharedFridge";
 import Event from "./js/Event";
+import Register from "./js/Register";
 ReactDOM.render(
     <Router>
         <Route exact path="/">
@@ -15,6 +16,9 @@ ReactDOM.render(
         </Route>
         <Route exact path="/login">
             <Login/>
+        </Route>
+        <Route exact path="/register">
+            <Register/>
         </Route>
         <Route path="/shared">
             <SharedFridge />
