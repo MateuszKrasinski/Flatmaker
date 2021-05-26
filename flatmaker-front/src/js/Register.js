@@ -2,61 +2,64 @@ import logo2 from '../img/logo2.PNG';
 
 import '../css/App.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faBars, faHome} from '@fortawesome/free-solid-svg-icons'
+import {faBars, faHome, faTimes} from '@fortawesome/free-solid-svg-icons'
 import {useHistory} from "react-router";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import {useState} from "react";
+import RightBar from "./RightBar";
+import TopBar from "./TopBar";
 
 
-
-function Logo() {
-    return <img className={"logo"} src={logo2} alt="logo"/>
-}
 
 function HamburgerIcon() {
-    return <FontAwesomeIcon icon={faBars}/>
+    return <FontAwesomeIcon icon={faBars} />
 }
 
 function HouseIcon() {
     return <FontAwesomeIcon icon={faHome}/>
 }
 
-const topBar = (
-    <div className={"top-nav"}>
-        <Logo/>
-        <HamburgerIcon/>
-    </div>
-)
 
-function Register(){
+function loginFunction(){
+    let variable={
+        "email": "string",
+        "password":'1234',
+    };
+    {axios.post("https://127.0.0.1:8000/login",variable).then(r =>console.log(r) )}
+}
+function Login(){
     const history = useHistory();
     return (
         <div className={"login-container"}>
             <div className={"option-container"}>
-                <a  onClick={() => history.push('/login') } >login</a>
-                <a onClick={() => history.push('/register') } className={"chosen"}>signup</a>
+                <a  onClick={() => history.push('/login') } className={"chosen"}>login</a>
+                <a onClick={() => history.push('/register') }>signup</a>
             </div>
             <div className={"input-container"}>
                 <input placeholder={"email"} type="text"/>
                 <input placeholder={"password"} type="text"/>
-                <input placeholder={"again password"} type="text"/>
+                <input placeholder={"password"} type="text"/>
             </div>
             <div className={"button-container"}>
-                <button>sign up</button>
+                <button onClick={loginFunction}>login</button>
             </div>
 
         </div>
     )
 }
 
+
 function OnBoard() {
     return (
         <div>
-            <nav>
-                {topBar}
+            <nav className>
+                <TopBar/>
             </nav>
             <main>
-                <Register/>
+                <Login/>
             </main>
-
+            <RightBar/>
         </div>
     );
 }

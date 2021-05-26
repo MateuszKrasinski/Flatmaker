@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  flex-direction: row;
 }
 
 code {
@@ -136,18 +138,47 @@ code {
 
 
 .right-nav{
-  position: relative;
+  position: fixed;
   top: 0;
-  right: 10vw;
+  right: 0;
   width: 30vw;
   height: 100vh;
   background-color: #fefefe;
 }
-.right-nav>ul{
+.pink{
+  margin-top: 3vh;
   display: flex;
+  background-color: #ffe0d8;
+  justify-content: center;
+}
+.right-nav>ul{
+  margin-top: 10vh;
+  padding: 0!important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  list-style:  none;
   width: 30vw;
+  font-size: 4.5vh;
+  font-weight: 200;
 }
 
+.right-nav>svg {
+  position: fixed;
+  right: 30px;
+  top: 30px;
+}
+.right-nav>svg:hover {
+  cursor: pointer;
+}
+.right-nav>ul>a{
+  text-decoration: none;
+  color: black;
+}
+.right-nav>ul>a:hover{
+  color: #666666;
+}
 .content-container{
   display: flex;
   flex-direction: row;

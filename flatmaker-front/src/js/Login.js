@@ -2,32 +2,25 @@ import logo2 from '../img/logo2.PNG';
 
 import '../css/App.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faBars, faHome} from '@fortawesome/free-solid-svg-icons'
+import {faBars, faHome, faTimes} from '@fortawesome/free-solid-svg-icons'
 import {useHistory} from "react-router";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import {useState} from "react";
+import RightBar from "./RightBar";
+import TopBar from "./TopBar";
 
 
-function Logo() {
-    return <img  className={"logo"} src={logo2} alt="logo"/>
-}
 
 function HamburgerIcon() {
-    return <FontAwesomeIcon icon={faBars}/>
+    return <FontAwesomeIcon icon={faBars} />
 }
 
 function HouseIcon() {
     return <FontAwesomeIcon icon={faHome}/>
 }
 
-const topBar = (
-    <div className={"top-nav"}>
-        <Link to={"/"}>
-            <Logo/>
-        </Link>
-        <HamburgerIcon/>
-    </div>
-)
+
 function loginFunction(){
     let variable={
         "email": "string",
@@ -59,13 +52,13 @@ function Login(){
 function OnBoard() {
     return (
         <div>
-            <nav>
-                {topBar}
+            <nav className>
+                <TopBar/>
             </nav>
             <main>
                 <Login/>
             </main>
-
+            <RightBar/>
         </div>
     );
 }

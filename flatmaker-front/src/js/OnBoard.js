@@ -8,9 +8,10 @@ import axios from "axios";
 import {withRouter} from 'react-router-dom';
 import { Link } from 'react-router-dom'
 import {useHistory} from "react-router";
-function Logo() {
-    return <img className={"logo"} src={logo2} alt="logo"/>
-}
+import RightBar from "./RightBar";
+import topBar from "./TopBar";
+import TopBar from "./TopBar";
+
 
 function HamburgerIcon() {
     return <FontAwesomeIcon icon={faBars}/>
@@ -20,11 +21,6 @@ function HouseIcon() {
     return <FontAwesomeIcon icon={faHome}/>
 }
 
-const topBar = (
-    <div className={"top-nav"}>
-        <Logo/>
-    </div>
-)
 
 function OnBoardHeader() {
     return (
@@ -51,13 +47,7 @@ function Buttons() {
 
 }
 
-function rightBar() {
-    return (<div className={"right-nav"}>
-        <ul>
-            <li>xD</li>
-        </ul>
-    </div>)
-}
+
 
 function OnBoard() {
     let variable=[];
@@ -68,13 +58,13 @@ function OnBoard() {
         <div className={"content-container"}>
             <div>
                 <nav>
-                    {topBar}
+                    <TopBar/>
                 </nav>
                 <main>
                     <OnBoardHeader/>
                 </main>
             </div>
-                {/*{rightBar()}*/}
+                <RightBar/>
         </div>
 
     );
