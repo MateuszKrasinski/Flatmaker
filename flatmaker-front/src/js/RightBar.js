@@ -18,7 +18,8 @@ function RightBar() {
 
     }
     if (clicked){
-        return (<div className={"right-nav"}>
+
+        return (<div className={"right-nav"}   >
             <FontAwesomeIcon icon={faTimes} onClick = {handleStatusChange}/>
             <ul>
                 <Link to='/shared'>
@@ -36,8 +37,8 @@ function RightBar() {
             </ul>
         </div>)
     }
-    return (<div className={"right-nav pink"} >
-        <FontAwesomeIcon icon={faBars} onClick = {handleStatusChange}/>
+    return (<div className={'right-nav invisible'}>
+        <FontAwesomeIcon className={'visible'} icon={faBars} onClick = {handleStatusChange}/>
     </div>)
 }
 export default RightBar

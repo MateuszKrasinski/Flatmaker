@@ -24,7 +24,7 @@ ReactDOM.render(
             <SharedFridge />
         </Route>
         <Route path="/bills">
-            <Bills />
+            <Bills/>
         </Route>
         <Route path="/event">
             <Event/>

@@ -3,26 +3,9 @@ import photo from '../img/pobrane (1).jpg'
 import '../css/bills.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faBars, faCheckCircle, faPlus} from '@fortawesome/free-solid-svg-icons'
+import TopBar from "./TopBar";
+import RightBar from "./RightBar";
 
-
-
-function Logo() {
-    return (
-        <img className={"logo"} src={logo2} alt="logo"/>
-    )
-}
-
-function HamburgerIcon() {
-    return <FontAwesomeIcon icon={faBars}/>
-}
-
-
-const topBar = (
-    <div className={"top-nav"}>
-        <Logo/>
-        <HamburgerIcon/>
-    </div>
-)
 
 function SubPage(pros){
     return (
@@ -75,15 +58,15 @@ function ItemAdd(){
 
 function OnBoard() {
     return (
-        <div>
+        <div className={'background-white'}>
             <nav>
-                {topBar}
+                <TopBar/>
                 <SubPage title = {"Shared Fridge"}/>
             </nav>
             <main>
                 <FridgeContainer/>
             </main>
-
+            <RightBar/>
         </div>
     );
 }

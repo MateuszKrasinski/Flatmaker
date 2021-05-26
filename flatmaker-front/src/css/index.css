@@ -138,6 +138,7 @@ code {
 
 
 .right-nav{
+  z-index: 999;
   position: fixed;
   top: 0;
   right: 0;
@@ -146,10 +147,7 @@ code {
   background-color: #fefefe;
 }
 .pink{
-  margin-top: 3vh;
-  display: flex;
   background-color: #ffe0d8;
-  justify-content: center;
 }
 .right-nav>ul{
   margin-top: 10vh;

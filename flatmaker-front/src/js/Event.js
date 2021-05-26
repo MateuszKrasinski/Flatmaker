@@ -6,12 +6,10 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faBars, faHome} from '@fortawesome/free-solid-svg-icons'
 import Calendar from 'react-calendar';
 import {useState} from "react";
+import TopBar from "./TopBar";
+import RightBar from "./RightBar";
 
-function Logo() {
-    return (
-        <img className={"logo"} src={logo2} alt="logo"/>
-    )
-}
+
 function SubPage(pros){
     return (
         <div className={"subpage"}>
@@ -22,12 +20,7 @@ function SubPage(pros){
 function HamburgerIcon() {
     return <FontAwesomeIcon icon={faBars}/>
 }
-const topBar = (
-    <div className={"top-nav"}>
-        <Logo/>
-        <HamburgerIcon/>
-    </div>
-)
+
 function MyApp() {
     const [value, onChange] = useState(new Date());
 
@@ -42,15 +35,15 @@ function MyApp() {
 }
 function OnBoard() {
     return (
-        <div>
+        <div >
             <nav>
-                {topBar}
+                <TopBar/>
                 <SubPage title = {"BILLS"}/>
             </nav>
             <main>
                 <MyApp/>
             </main>
-
+            <RightBar/>
         </div>
     );
 }
