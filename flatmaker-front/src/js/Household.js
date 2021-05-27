@@ -2,7 +2,7 @@ import logo2 from '../img/logo2.PNG';
 import photo from '../img/pobrane (1).jpg'
 import '../css/bills.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faBars, faCheckCircle, faPlus} from '@fortawesome/free-solid-svg-icons'
+import {faBars, faCheckCircle, faMoneyBillAlt, faPlus, faTimes, faTimesCircle} from '@fortawesome/free-solid-svg-icons'
 import TopBar from "./TopBar";
 import RightBar from "./RightBar";
 
@@ -19,37 +19,36 @@ function Item(){
         <div className={"item"}>
             <span>item name</span>
             <FontAwesomeIcon icon={faCheckCircle}/>
-            <img src={photo} alt=""/>
-            <img src={photo} alt=""/>
+            <FontAwesomeIcon icon={faTimesCircle}/>
         </div>
     )
 }
+
+function ItemsContainer(){
+    return (
+        <div className={"items-container-shopping"}>
+            <Item/>
+            <Item/>
+            <Item/>
+
+        </div>
+
+    )
+}
+
 function FridgeContainer(){
     return (
 
-            <div className={"fridge-container"}>
-                <ItemsContainer/>
-                <ItemAdd/>
-            </div>
+        <div className={"household-container"}>
+            <ItemAdd/>
+            <ItemsContainer/>
+        </div>
     )
 }
-function ItemsContainer(){
-    return (
-            <div className={"items-container"}>
-                <Item/>
-                <Item/>
-                <Item/>
-
-            </div>
-
-    )
-}
-
 function ItemAdd(){
     return (
-        <div className={"add-bill"}>
-            <input placeholder={"type bill..."} type="text"/>
-            <FontAwesomeIcon icon={faPlus}/>
+        <div className={"photo-container"}>
+            <img src={photo} alt=""/>
         </div>
     )
 }
@@ -61,10 +60,13 @@ function OnBoard() {
         <div className={'background-white'}>
             <nav>
                 <TopBar/>
-                <SubPage title = {"Shared Fridge"}/>
+                <SubPage title = {"Household"}/>
             </nav>
             <main>
                 <FridgeContainer/>
+                <FridgeContainer/>
+                <FridgeContainer/>
+
             </main>
             <RightBar/>
         </div>

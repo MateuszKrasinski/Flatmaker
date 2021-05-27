@@ -1,12 +1,18 @@
 <?php
 
 namespace App\Entity;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 use App\Repository\GroupToUserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Serializer\Annotation\MaxDepth;
 
 /**
+ * @ApiResource(
+ * normalizationContext={"groups"={"group_to_user:read"},"swagger_definition_name"="Read"},
+ * denormalizationContext={"groups"={"group_to_user:write"},"swagger_definition_name"="Write"}
+ * )
  * @ORM\Entity(repositoryClass=GroupToUserRepository::class)
  */
 class GroupToUser
@@ -20,11 +26,13 @@ class GroupToUser
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="relation")
+     * @Groups({"group_to_user:read","group:read"})
      */
     private $id_user;
 
     /**
      * @ORM\ManyToOne(targetEntity=Group::class, inversedBy="relation")
+     *
      */
     private $id_group;
 

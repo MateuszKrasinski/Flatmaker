@@ -2,7 +2,7 @@ import logo2 from '../img/logo2.PNG';
 import photo from '../img/pobrane (1).jpg'
 import '../css/bills.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faBars, faCheckCircle, faPlus} from '@fortawesome/free-solid-svg-icons'
+import {faBars, faCheckCircle, faMoneyBillAlt, faPlus} from '@fortawesome/free-solid-svg-icons'
 import TopBar from "./TopBar";
 import RightBar from "./RightBar";
 
@@ -18,8 +18,8 @@ function Item(){
     return (
         <div className={"item"}>
             <span>item name</span>
+            <FontAwesomeIcon icon={faMoneyBillAlt}/>
             <FontAwesomeIcon icon={faCheckCircle}/>
-            <img src={photo} alt=""/>
             <img src={photo} alt=""/>
         </div>
     )
@@ -27,20 +27,20 @@ function Item(){
 function FridgeContainer(){
     return (
 
-            <div className={"fridge-container"}>
-                <ItemsContainer/>
-                <ItemAdd/>
-            </div>
+        <div className={"fridge-container"}>
+            <ItemsContainer/>
+            <ItemAdd/>
+        </div>
     )
 }
 function ItemsContainer(){
     return (
-            <div className={"items-container"}>
-                <Item/>
-                <Item/>
-                <Item/>
+        <div className={"items-container"}>
+            <Item/>
+            <Item/>
+            <Item/>
 
-            </div>
+        </div>
 
     )
 }
@@ -61,7 +61,7 @@ function OnBoard() {
         <div className={'background-white'}>
             <nav>
                 <TopBar/>
-                <SubPage title = {"Shared Fridge"}/>
+                <SubPage title = {"Shopping List"}/>
             </nav>
             <main>
                 <FridgeContainer/>

@@ -3,27 +3,16 @@ import photo from '../img/pobrane (1).jpg'
 import '../css/bills.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faBars, faArrowRight, faPlus} from '@fortawesome/free-solid-svg-icons'
+import RightBar from "./RightBar";
+import TopBar from "./TopBar";
 
 
 
-
-function Logo() {
-    return (
-            <img className={"logo"} src={logo2} alt="logo"/>
-    )
-}
 
 function HamburgerIcon() {
     return <FontAwesomeIcon icon={faBars}/>
 }
 
-
-const topBar = (
-    <div className={"top-nav"}>
-        <Logo/>
-        <HamburgerIcon/>
-    </div>
-)
 function Bill(pros){
     return (
         <div className={"bill"}>
@@ -93,9 +82,9 @@ function SubPage(pros){
 }
 function OnBoard() {
     return (
-        <div>
+        <div className={'background-white'}>
             <nav>
-                {topBar}
+                <TopBar/>
                 <SubPage title = {"BILLS"}/>
             </nav>
             <main>
@@ -107,10 +96,9 @@ function OnBoard() {
                 </div>
                 <UserProfile count={25}/>
             </main>
-
+            <RightBar/>
         </div>
     );
 }
 
 export default OnBoard;
-// set "SKIP_PREFLIGHT_CHECK=true" && npm start

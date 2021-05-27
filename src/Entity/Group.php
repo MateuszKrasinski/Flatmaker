@@ -2,12 +2,18 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\GroupRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
+ * @ApiResource(
+ * normalizationContext={"groups"={"group:read"},"swagger_definition_name"="Read"},
+ * denormalizationContext={"groups"={"group:write"},"swagger_definition_name"="Write"}
+ * )
  * @ORM\Entity(repositoryClass=GroupRepository::class)
  * @ORM\Table(name="`group`")
  */
@@ -22,21 +28,25 @@ class Group
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"group:read"})
      */
     private $name;
 
     /**
      * @ORM\OneToMany(targetEntity=GroupToUser::class, mappedBy="id_group")
+     * @Groups({"group:read"})
      */
     private $relation;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"group:read", "group_to_user:read"})
      */
     private $description;
 
     /**
      * @ORM\OneToMany(targetEntity=Help::class, mappedBy="id_group")
+     * @Groups({ "group:read", "group_to_user:read", "help:read","user:read","user_details:read","role:read" })
      */
     private $helps;
 

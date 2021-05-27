@@ -7,23 +7,37 @@ import Bills from "./js/Bills";
 import OnBoard from "./js/OnBoard";
 import Login from './js/Login.js';
 import SharedFridge from "./js/SharedFridge";
+import Event from "./js/Event";
+import Register from "./js/Register";
+import ShoppingList from "./js/ShoppingList";
+import Household from "./js/Household";
 ReactDOM.render(
     <Router>
-            <Route exact path="/">
-                <style>
-                </style>
-                <OnBoard/>
-            </Route>
-            <Route exact path="/login">
-                <Login/>
-            </Route>
-            <Route path="/shared">
-                <SharedFridge />
-            </Route>
-            <Route path="/bills">
-                <Bills />
-            </Route>
+        <Route exact path="/">
+            <OnBoard/>
+        </Route>
+        <Route exact path="/login">
+            <Login/>
+        </Route>
+        <Route exact path="/register">
+            <Register/>
+        </Route>
+        <Route path="/shared">
+            <SharedFridge />
+        </Route>
+        <Route path="/bills">
+            <Bills/>
+        </Route>
+        <Route path="/event">
+            <Event/>
+        </Route>
+        <Route path="/shopping">
+            <ShoppingList/>
+        </Route>
+        <Route path="/household">
+            <Household/>
+        </Route>
     </Router>,
-    document.getElementById('root ')
+    document.querySelector('body')
 );
 

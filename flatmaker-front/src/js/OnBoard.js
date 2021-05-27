@@ -4,12 +4,14 @@ import '../css/App.css';
 import '../css/index.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faBars, faHome} from '@fortawesome/free-solid-svg-icons'
+import axios from "axios";
+import {withRouter} from 'react-router-dom';
+import { Link } from 'react-router-dom'
+import {useHistory} from "react-router";
+import RightBar from "./RightBar";
+import topBar from "./TopBar";
+import TopBar from "./TopBar";
 
-
-
-function Logo() {
-    return <img className={"logo"} src={logo2} alt="logo"/>
-}
 
 function HamburgerIcon() {
     return <FontAwesomeIcon icon={faBars}/>
@@ -19,12 +21,6 @@ function HouseIcon() {
     return <FontAwesomeIcon icon={faHome}/>
 }
 
-const topBar = (
-    <div className={"top-nav"}>
-        <Logo/>
-        <HamburgerIcon/>
-    </div>
-)
 
 function OnBoardHeader() {
     return (
@@ -40,26 +36,37 @@ function OnBoardHeader() {
 }
 
 function Buttons() {
-    return(
+    const history = useHistory();
+    return (
         <div className={"button-container"}>
-            <button>Login</button>
-            <button>Sign up</button>
+            <button onClick={() => history.push('/login') }>Login</button>
+            <button onClick={() => history.push('/register') }>Sign up</button>
 
         </div>
     )
 
 }
 
+
+
 function OnBoard() {
+    let variable=[];
+
+    {axios.get("https://127.0.0.1:8000/api/users.json").then((response)=>{console.log(response);variable=response.data})}
+
     return (
-        <div>
-            <nav>
-                {topBar}
-            </nav>
-            <main>
-                <OnBoardHeader/>
-            </main>
+        <div className={"content-container"}>
+            <div>
+                <nav>
+                    <TopBar/>
+                </nav>
+                <main>
+                    <OnBoardHeader/>
+                </main>
+            </div>
+                <RightBar/>
         </div>
+
     );
 }
 

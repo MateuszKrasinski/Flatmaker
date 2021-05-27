@@ -2,13 +2,20 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\RoleRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
+ * @ApiResource(
+ * normalizationContext={"groups"={"role:read"},"swagger_definition_name"="Read"},
+ * denormalizationContext={"groups"={"role:write"},"swagger_definition_name"="Write"}
+ *     )
  * @ORM\Entity(repositoryClass=RoleRepository::class)
+ * @ORM\Table(name="role")
  */
 class Role
 {
@@ -21,6 +28,7 @@ class Role
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"role:read", "user:read","group_to_user:read","help:read","group:read"})
      */
     private $role;
 
@@ -28,6 +36,10 @@ class Role
      * @ORM\OneToMany(targetEntity=User::class, mappedBy="id_role")
      */
     private $relation;
+    public function __invoke()
+    {
+
+    }
 
     public function __construct()
     {
