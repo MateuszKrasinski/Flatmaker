@@ -9,6 +9,8 @@ import Login from './js/Login.js';
 import SharedFridge from "./js/SharedFridge";
 import Event from "./js/Event";
 import Register from "./js/Register";
+import ShoppingList from "./js/ShoppingList";
+import Household from "./js/Household";
 ReactDOM.render(
     <Router>
         <Route exact path="/">
@@ -28,6 +30,12 @@ ReactDOM.render(
         </Route>
         <Route path="/event">
             <Event/>
+        </Route>
+        <Route path="/shopping">
+            <ShoppingList/>
+        </Route>
+        <Route path="/household">
+            <Household/>
         </Route>
     </Router>,
     document.querySelector('body')

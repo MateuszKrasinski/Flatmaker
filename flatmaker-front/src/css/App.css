@@ -132,7 +132,7 @@ h1, h2{
 .button-container>button{
   width: 12vw;
 
-  background: #CF307D 0% 0% no-repeat padding-box;
+  background: #000000 0% 0% no-repeat padding-box;
   border-radius: 30px;
 }
 .option-container{

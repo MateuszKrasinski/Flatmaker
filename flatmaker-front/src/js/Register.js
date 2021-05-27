@@ -33,8 +33,8 @@ function Login(){
     return (
         <div className={"login-container"}>
             <div className={"option-container"}>
-                <a  onClick={() => history.push('/login') } className={"chosen"}>login</a>
-                <a onClick={() => history.push('/register') }>signup</a>
+                <a  onClick={() => history.push('/login') } >login</a>
+                <a onClick={() => history.push('/register') }className={"chosen"}>signup</a>
             </div>
             <div className={"input-container"}>
                 <input placeholder={"email"} type="text"/>

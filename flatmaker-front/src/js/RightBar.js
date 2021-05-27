@@ -19,7 +19,7 @@ function RightBar() {
     }
     if (clicked){
 
-        return (<div className={"right-nav"}   >
+        return (<div className={"right-nav"}  style={{backgroundColor: "#f5f5f5"}} >
             <FontAwesomeIcon icon={faTimes} onClick = {handleStatusChange}/>
             <ul>
                 <Link to='/shared'>
@@ -28,11 +28,14 @@ function RightBar() {
                 <Link to='/bills'>
                     <li onClick={handleStatusChange}>Bills</li>
                 </Link>
-                <Link to='/list'>
+                <Link to='/shopping'>
                     <li onClick={handleStatusChange}>Shopping List</li>
                 </Link>
                 <Link to='/event'>
                     <li onClick={handleStatusChange}>Calendar</li>
+                </Link>
+                <Link to='/household'>
+                    <li onClick={handleStatusChange}>Household</li>
                 </Link>
             </ul>
         </div>)
