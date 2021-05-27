@@ -1,15 +1,9 @@
 
 
-register:
-  path: /register
+register_app:
+  path: /register2
   controller: App\Controller\UserController::createUser
 
-login:
-  path: /login
-  controller: App\Controller\UserController::login
-loginapi:
-  path: /users/{id}.{_format}
-  controller: App\Controller\UserController::login
 groups:
   path: /groups/new
   controller: App\Controller\GroupController::createGroup

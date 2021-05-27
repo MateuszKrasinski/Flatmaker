@@ -21,12 +21,13 @@ function HouseIcon() {
 }
 
 
-function loginFunction(){
+function registerFunction(){
+
     let variable={
-        "email": "string",
-        "password":'1234',
+        "email": "mk@gmail.com",
+        "password":"123"
     };
-    {axios.post("https://127.0.0.1:8000/login",variable).then(r =>console.log(r) )}
+    {axios.post("https://127.0.0.1:8000/register", JSON.stringify(variable)).then(r =>console.log(r) )}
 }
 function Login(){
     const history = useHistory();
@@ -42,7 +43,7 @@ function Login(){
                 <input placeholder={"password"} type="text"/>
             </div>
             <div className={"button-container"}>
-                <button onClick={loginFunction}>login</button>
+                <button onClick={registerFunction}>sign up</button>
             </div>
 
         </div>

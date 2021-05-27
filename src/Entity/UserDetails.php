@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\UserDetailsRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -46,6 +47,11 @@ class UserDetails
      * @ORM\OneToMany(targetEntity=User::class, mappedBy="id_user")
      */
     private $relation;
+
+    public function __construct()
+    {
+        $this->relation = new ArrayCollection();
+    }
     public function getId(): ?int
     {
         return $this->id;

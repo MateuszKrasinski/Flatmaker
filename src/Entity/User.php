@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 
@@ -43,6 +44,7 @@ class User implements UserInterface
      */
     private $relation1;
     /**
+     * @ORM\GeneratedValue
      * @ORM\ManyToOne(targetEntity=Role::class, inversedBy="relation")
      * @Groups({"user:read","group_to_user:read", "help:read","group:read"})
      */
@@ -50,13 +52,15 @@ class User implements UserInterface
     private $id_role;
 
     /**
+     * @ORM\GeneratedValue
      * @ORM\OneToOne(targetEntity=UserDetails::class, cascade={"persist", "remove"})
      *  @Groups({"user:read","group_to_user:read", "help:read","group:read"})
      */
     private $id_user;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     *@ORM\GeneratedValue
+     * @ORM\Column(type="string", length=255, unique=true)
      * @Groups({"user:read","group_to_user:read", "help:read","group:read"})
      *
      */
@@ -69,7 +73,8 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="datetime", nullable=true)
      * @Groups({"user:read","group_to_user:read", "help:read"})
      */
     private $created_at;
@@ -79,6 +84,7 @@ class User implements UserInterface
         $this->relation = new ArrayCollection();
         $this->relation_ = new ArrayCollection();
         $this->relation__ = new ArrayCollection();
+        $this->relation1 = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -182,7 +188,11 @@ class User implements UserInterface
 
     public function getRoles()
     {
-        // TODO: Implement getRoles() method.
+        $roles = [];
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
     }
     /**
      * @see UserInterface
@@ -200,5 +210,35 @@ class User implements UserInterface
     public function eraseCredentials()
     {
         // TODO: Implement eraseCredentials() method.
+    }
+
+    /**
+     * @return Collection|Help[]
+     */
+    public function getRelation1(): Collection
+    {
+        return $this->relation1;
+    }
+
+    public function addRelation1(Help $relation1): self
+    {
+        if (!$this->relation1->contains($relation1)) {
+            $this->relation1[] = $relation1;
+            $relation1->setIdUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRelation1(Help $relation1): self
+    {
+        if ($this->relation1->removeElement($relation1)) {
+            // set the owning side to null (unless already changed)
+            if ($relation1->getIdUser() === $this) {
+                $relation1->setIdUser(null);
+            }
+        }
+
+        return $this;
     }
 }
