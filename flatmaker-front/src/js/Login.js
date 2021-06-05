@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import {useState} from "react";
 import RightBar from "./RightBar";
 import TopBar from "./TopBar";
+import {login} from "./Api";
 
 
 
@@ -21,15 +22,22 @@ function HouseIcon() {
 }
 
 
-function loginFunction(){
-    let variable={
-        "email": "string",
-        "password":'1234',
-    };
-    {axios.post("https://127.0.0.1:8000/login",variable).then(r =>console.log(r) )}
-}
+
 function Login(){
     const history = useHistory();
+    const [name, setName] = useState("");
+    const [password, setPassword] = useState("");
+    const [response, setStatus] = useState();
+    const tryLogin = async () => {
+        const response = await login({
+            password: password,
+            email: name,
+            _csrf_token:"csrf_token('authenticate')",
+        });
+        setStatus(response);
+        console.log(name,password);
+        console.log(response);
+    };
     return (
         <div className={"login-container"}>
             <div className={"option-container"}>
@@ -37,11 +45,19 @@ function Login(){
                 <a onClick={() => history.push('/register') }>signup</a>
             </div>
             <div className={"input-container"}>
-                <input placeholder={"email"} type="text"/>
-                <input placeholder={"password"} type="text"/>
+                <input
+                    type="text"
+                    placeholder="Name"
+                    onChange={(e) => setName(e.target.value)}
+                ></input>
+                <input
+                    type="password"
+                    placeholder="password"
+                    onChange={(e) => setPassword(e.target.value)}
+                ></input>
             </div>
             <div className={"button-container"}>
-                <button onClick={loginFunction}>login</button>
+                <button onClick={tryLogin}>login</button>
             </div>
 
         </div>

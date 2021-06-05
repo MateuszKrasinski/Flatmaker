@@ -20,16 +20,21 @@ class SecurityController extends AbstractController
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        // if ($this->getUser()) {
-        //     return $this->redirectToRoute('target_path');
-        // }
+//         if ($this->getUser()) {
+//             return $this->redirectToRoute('target_path');
+//         }
 
-        // get the login error if there is one
-        $error = $authenticationUtils->getLastAuthenticationError();
-        // last username entered by the user
-        $lastUsername = $authenticationUtils->getLastUsername();
+//        $error = $authenticationUtils->getLastAuthenticationError();
+//        $lastUsername = $authenticationUtils->getLastUsername();
+        $response = new Response();
 
-        return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
+        if ($this->getUser())
+            $response->setContent("True");
+        else
+            $response->setContent('false');
+        $response->headers->set('Content-Type', 'application/json');
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+        return $response;
     }
 
     /**
@@ -47,7 +52,8 @@ class SecurityController extends AbstractController
 
             $data = json_decode($request->getContent());
            $user = new User();
-           $user->setEmail($data->email);
+
+        $user->setEmail($data->email);
            $user->setPassword($data->password);
             $user->setPassword($passwordEncoder->encodePassword(
                 $user,
@@ -56,12 +62,9 @@ class SecurityController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
-
         $response = new Response();
-
         $response->headers->set('Content-Type', 'application/json');
         $response->headers->set('Access-Control-Allow-Origin', '*');
-
         $response->setContent($guardHandler->authenticateUserAndHandleSuccess(
         $user,
         $request,

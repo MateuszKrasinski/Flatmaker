@@ -4,16 +4,14 @@ import '../css/App.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faBars, faHome, faTimes} from '@fortawesome/free-solid-svg-icons'
 import {useHistory} from "react-router";
-import axios from "axios";
-import { Link } from "react-router-dom";
 import {useState} from "react";
 import RightBar from "./RightBar";
 import TopBar from "./TopBar";
-
+import {register} from "./Api";
 
 
 function HamburgerIcon() {
-    return <FontAwesomeIcon icon={faBars} />
+    return <FontAwesomeIcon icon={faBars}/>
 }
 
 function HouseIcon() {
@@ -21,29 +19,47 @@ function HouseIcon() {
 }
 
 
-function registerFunction(){
-
-    let variable={
-        "email": "mk@gmail.com",
-        "password":"123"
-    };
-    {axios.post("https://127.0.0.1:8000/register", JSON.stringify(variable)).then(r =>console.log(r) )}
-}
-function Login(){
+function Login() {
     const history = useHistory();
+    const [name, setName] = useState("");
+    const [password, setPassword] = useState("");
+    const [repassword, setRepassword] = useState("");
+    const [response, setStatus] = useState();
+    const tryRegister = async () => {
+        if (password !== repassword) return;
+        const response = await register({
+            email: name,
+            password: password,
+        });
+        setStatus(response);
+        console.log(name);
+        console.log(response);
+    };
     return (
         <div className={"login-container"}>
             <div className={"option-container"}>
-                <a  onClick={() => history.push('/login') } >login</a>
-                <a onClick={() => history.push('/register') }className={"chosen"}>signup</a>
+                <a onClick={() => history.push('/login')}>login</a>
+                <a onClick={() => history.push('/register')} className={"chosen"}>signup</a>
             </div>
             <div className={"input-container"}>
-                <input placeholder={"email"} type="text"/>
-                <input placeholder={"password"} type="text"/>
-                <input placeholder={"password"} type="text"/>
+                <input
+                    type="text"
+                    placeholder="Name"
+                    onChange={(e) => setName(e.target.value)}
+                ></input>
+                <input
+                    type="password"
+                    placeholder="passoword"
+                    onChange={(e) => setPassword(e.target.value)}
+                ></input>
+                <input
+                    type="password"
+                    placeholder="repassoword"
+                    onChange={(e) => setRepassword(e.target.value)}
+                ></input>
             </div>
             <div className={"button-container"}>
-                <button onClick={registerFunction}>sign up</button>
+                <button onClick={tryRegister}>sign up</button>
             </div>
 
         </div>
