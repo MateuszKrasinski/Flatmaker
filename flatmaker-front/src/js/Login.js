@@ -1,41 +1,26 @@
-import logo2 from '../img/logo2.PNG';
-
 import '../css/App.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faBars, faHome, faTimes} from '@fortawesome/free-solid-svg-icons'
 import {useHistory} from "react-router";
-import axios from "axios";
-import { Link } from "react-router-dom";
 import {useState} from "react";
 import RightBar from "./RightBar";
 import TopBar from "./TopBar";
 import {login} from "./Api";
-
-
-
-function HamburgerIcon() {
-    return <FontAwesomeIcon icon={faBars} />
-}
-
-function HouseIcon() {
-    return <FontAwesomeIcon icon={faHome}/>
-}
-
-
-
+import {useCookies} from "react-cookie";
 function Login(){
+    const [cookies, setCookie, removeCookie] = useCookies(['cookie-name']);
     const history = useHistory();
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
     const [response, setStatus] = useState();
     const tryLogin = async () => {
+        console.log(cookies);
         const response = await login({
             password: password,
             email: name,
-            _csrf_token:"csrf_token('authenticate')",
+            '_csrf_token': cookies.load('XSRF-TOKEN'),
         });
         setStatus(response);
-        console.log(name,password);
         console.log(response);
     };
     return (

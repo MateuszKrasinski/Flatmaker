@@ -1,5 +1,7 @@
 
-
+register_app2:
+  path: /login2
+  controller: App\Controller\UserController::createUser
 register_app:
   path: /register2
   controller: App\Controller\UserController::createUser
@@ -17,7 +19,7 @@ groupss:
   controller: App\Controller\GroupController::getGroups
 
 help:
-  path: /groups/id/help/
+  path: /help
   controller: App\Controller\HelpController::createHelp
 
 helpGroup:

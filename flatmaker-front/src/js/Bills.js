@@ -1,5 +1,4 @@
-import logo2 from '../img/logo2.PNG';
-import photo from '../img/pobrane (1).jpg'
+import photo from '../img/person1.jpg'
 import '../css/bills.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faBars, faArrowRight, faPlus} from '@fortawesome/free-solid-svg-icons'
@@ -9,9 +8,6 @@ import TopBar from "./TopBar";
 
 
 
-function HamburgerIcon() {
-    return <FontAwesomeIcon icon={faBars}/>
-}
 
 function Bill(pros){
     return (

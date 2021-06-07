@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Entity\UserDetails;
 use App\Form\UserRegistrationFormType;
 use App\Security\LoginFormAuthenticator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -24,16 +25,17 @@ class SecurityController extends AbstractController
 //             return $this->redirectToRoute('target_path');
 //         }
 
-//        $error = $authenticationUtils->getLastAuthenticationError();
-//        $lastUsername = $authenticationUtils->getLastUsername();
         $response = new Response();
-
-        if ($this->getUser())
-            $response->setContent("True");
-        else
-            $response->setContent('false');
         $response->headers->set('Content-Type', 'application/json');
         $response->headers->set('Access-Control-Allow-Origin', '*');
+        if ($this->getUser())
+            $response->setContent($this->getUser());
+        else{
+            $error = $authenticationUtils->getLastAuthenticationError();
+            $lastUsername = $authenticationUtils->getLastUsername();
+            $response->setContent(json_encode($authenticationUtils));
+        }
+
         return $response;
     }
 
@@ -59,18 +61,30 @@ class SecurityController extends AbstractController
                 $user,
                 $user->getPassword()
             ));
+
             $em = $this->getDoctrine()->getManager();
+            $userDetails = new UserDetails();
+            $entityManager = $this->getDoctrine()->getManager();
+            $user_details = new UserDetails();
+//            $user_details->setName('Name');
+//            $user_details->setSurname('Surname');
+//            $user_details->setPhone('Phone number');
+//            $user_details->setPhoto('person1');
+            $entityManager->persist($user_details);
+            $entityManager->flush();
+            $user->setIdUser($user_details);
             $em->persist($user);
             $em->flush();
         $response = new Response();
         $response->headers->set('Content-Type', 'application/json');
         $response->headers->set('Access-Control-Allow-Origin', '*');
-        $response->setContent($guardHandler->authenticateUserAndHandleSuccess(
-        $user,
-        $request,
-        $formAuthenticator,
-        'main'
-    ));
+//        $response->setContent($guardHandler->authenticateUserAndHandleSuccess(
+//        $user,
+//        $request,
+//        $formAuthenticator,
+//        'main'
+//    ));
+        $response->setContent(json_encode($user_details));
 
         return $response;
     }

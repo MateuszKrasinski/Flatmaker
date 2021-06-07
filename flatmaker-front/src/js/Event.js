@@ -1,9 +1,7 @@
-import logo2 from '../img/logo2.PNG';
-
 import '../css/App.css';
 import '../css/index.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faBars, faHome} from '@fortawesome/free-solid-svg-icons'
+import {faBars} from '@fortawesome/free-solid-svg-icons'
 import Calendar from 'react-calendar';
 import {useState} from "react";
 import TopBar from "./TopBar";

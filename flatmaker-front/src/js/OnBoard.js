@@ -5,11 +5,9 @@ import '../css/index.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faBars, faHome} from '@fortawesome/free-solid-svg-icons'
 import axios from "axios";
-import {withRouter} from 'react-router-dom';
-import { Link } from 'react-router-dom'
+
 import {useHistory} from "react-router";
 import RightBar from "./RightBar";
-import topBar from "./TopBar";
 import TopBar from "./TopBar";
 
 

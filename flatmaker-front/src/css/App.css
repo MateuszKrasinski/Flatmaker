@@ -117,6 +117,12 @@ h1, h2{
   align-items: center;
   height: 40%;
 }
+.input-container>img{
+  display: flex;
+  width: 12vh;
+  height: 12vh;
+  border-radius: 100%;
+}
 
 .input-container>input{
   width: 20vw;

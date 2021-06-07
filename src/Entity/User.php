@@ -25,7 +25,7 @@ class User implements UserInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(type="integer")
-     * @Groups({"user:read","group_to_user:read", "help:read","group:read"})
+     * @Groups({"user:read","user:write","group_to_user:read", "help:read","group:read"})
      *
      */
     private $id;
@@ -54,12 +54,12 @@ class User implements UserInterface
     /**
      * @ORM\GeneratedValue
      * @ORM\OneToOne(targetEntity=UserDetails::class, cascade={"persist", "remove"})
-     *  @Groups({"user:read","group_to_user:read", "help:read","group:read"})
+     *  @Groups({"user:read","user:write","group_to_user:read", "help:read","group:read"})
      */
     private $id_user;
 
     /**
-     *@ORM\GeneratedValue
+     *@ORM\Column(type="string", length=255)
      * @ORM\Column(type="string", length=255, unique=true)
      * @Groups({"user:read","group_to_user:read", "help:read","group:read"})
      *

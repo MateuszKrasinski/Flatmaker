@@ -1,8 +1,5 @@
-import logo2 from '../img/logo2.PNG';
 
 import '../css/App.css';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faBars, faHome, faTimes} from '@fortawesome/free-solid-svg-icons'
 import {useHistory} from "react-router";
 import {useState} from "react";
 import RightBar from "./RightBar";
@@ -10,13 +7,6 @@ import TopBar from "./TopBar";
 import {register} from "./Api";
 
 
-function HamburgerIcon() {
-    return <FontAwesomeIcon icon={faBars}/>
-}
-
-function HouseIcon() {
-    return <FontAwesomeIcon icon={faHome}/>
-}
 
 
 function Login() {
@@ -30,6 +20,7 @@ function Login() {
         const response = await register({
             email: name,
             password: password,
+            csrf_token:'authenticate'
         });
         setStatus(response);
         console.log(name);

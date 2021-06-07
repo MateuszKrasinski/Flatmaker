@@ -11,8 +11,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * * @ApiResource(
- * normalizationContext={"groups"={"role:read"},"swagger_definition_name"="Read"},
- * denormalizationContext={"groups"={"role:write"},"swagger_definition_name"="Write"}
+ * normalizationContext={"groups"={"user_details:read"},"swagger_definition_name"="Read"},
+ * denormalizationContext={"groups"={"user_details:write"},"swagger_definition_name"="Write"}
  * )
  * @ORM\Entity(repositoryClass=UserDetailsRepository::class)
  */
@@ -22,24 +22,25 @@ class UserDetails
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"user_details:read","user_details:write","user:write"})
      */
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Groups({"user_details:read", "user:read","group_to_user:read","help:read","group:read"})
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"user_details:read","user_details:write", "user:read","group_to_user:read","help:read","group:read"})
      */
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Groups({"user_details:read", "user:read","group_to_user:read","help:read","group:read"})
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"user_details:read","user_details:write", "user:read","group_to_user:read","help:read","group:read"})
      */
     private $surname;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Groups({"user_details:read", "user:read","group_to_user:read","help:read","group:read"})
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"user_details:read","user_details:write", "user:read","group_to_user:read","help:read","group:read"})
      */
     private $phone;
 
@@ -47,6 +48,12 @@ class UserDetails
      * @ORM\OneToMany(targetEntity=User::class, mappedBy="id_user")
      */
     private $relation;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"user_details:read","user_details:write", "user:read","group_to_user:read","help:read","group:read"})
+     */
+    private $photo;
 
     public function __construct()
     {
@@ -118,6 +125,18 @@ class UserDetails
                 $relation->setIdUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPhoto(): ?string
+    {
+        return $this->photo;
+    }
+
+    public function setPhoto(?string $photo): self
+    {
+        $this->photo = $photo;
 
         return $this;
     }

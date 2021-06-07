@@ -1,8 +1,7 @@
-import logo2 from '../img/logo2.PNG';
-import photo from '../img/pobrane (1).jpg'
+import photo from '../img/person2.jpg'
 import '../css/bills.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faBars, faCheckCircle, faMoneyBillAlt, faPlus, faTimes, faTimesCircle} from '@fortawesome/free-solid-svg-icons'
+import { faCheckCircle, faTimesCircle} from '@fortawesome/free-solid-svg-icons'
 import TopBar from "./TopBar";
 import RightBar from "./RightBar";
 
