@@ -44,19 +44,18 @@ class User implements UserInterface
      */
     private $relation1;
     /**
-     * @ORM\GeneratedValue
-     * @ORM\ManyToOne(targetEntity=Role::class, inversedBy="relation")
+     * @ORM\Column(type="json")
      * @Groups({"user:read","group_to_user:read", "help:read","group:read"})
      */
 
-    private $id_role;
+    private $roles = [];
 
     /**
      * @ORM\GeneratedValue
      * @ORM\OneToOne(targetEntity=UserDetails::class, cascade={"persist", "remove"})
      *  @Groups({"user:read","user:write","group_to_user:read", "help:read","group:read"})
      */
-    private $id_user;
+    private $details;
 
     /**
      *@ORM\Column(type="string", length=255)
@@ -71,13 +70,6 @@ class User implements UserInterface
      * @Groups({"user:read"})
      */
     private $password;
-
-    /**
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="datetime", nullable=true)
-     * @Groups({"user:read","group_to_user:read", "help:read"})
-     */
-    private $created_at;
 
     public function __construct()
     {
@@ -123,18 +115,6 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getIdRole(): ?Role
-    {
-        return $this->id_role;
-    }
-
-    public function setIdRole(?Role $id_role): self
-    {
-        $this->id_role = $id_role;
-
-        return $this;
-    }
-
     public function getIdUser(): ?UserDetails
     {
         return $this->id_user;
@@ -174,17 +154,6 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeInterface
-    {
-        return $this->created_at;
-    }
-
-    public function setCreatedAt(\DateTimeInterface $created_at): self
-    {
-        $this->created_at = $created_at;
-
-        return $this;
-    }
 
     public function getRoles()
     {

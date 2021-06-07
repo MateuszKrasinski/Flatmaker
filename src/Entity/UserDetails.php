@@ -45,7 +45,7 @@ class UserDetails
     private $phone;
 
     /**
-     * @ORM\OneToMany(targetEntity=User::class, mappedBy="id_user")
+     * @ORM\OneToMany(targetEntity=User::class, mappedBy="details")
      */
     private $relation;
 
