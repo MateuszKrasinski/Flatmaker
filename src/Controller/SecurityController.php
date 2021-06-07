@@ -33,7 +33,7 @@ class SecurityController extends AbstractController
         else{
             $error = $authenticationUtils->getLastAuthenticationError();
             $lastUsername = $authenticationUtils->getLastUsername();
-            $response->setContent(json_encode($authenticationUtils));
+            $response->setContent('some problems');
         }
 
         return $response;
@@ -72,7 +72,7 @@ class SecurityController extends AbstractController
 //            $user_details->setPhoto('person1');
             $entityManager->persist($user_details);
             $entityManager->flush();
-            $user->setIdUser($user_details);
+            $user->setDetails($user_details);
             $em->persist($user);
             $em->flush();
         $response = new Response();

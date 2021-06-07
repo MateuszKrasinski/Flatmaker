@@ -115,15 +115,15 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getIdUser(): ?UserDetails
+    public function getDetails(): ?UserDetails
     {
-        return $this->id_user;
+        return $this->details;
 //        return $this->id_user->getRelation();
     }
 
-    public function setIdUser(?UserDetails $id_user): self
+    public function setDetails(?UserDetails $details): self
     {
-        $this->id_user = $id_user;
+        $this->details = $details;
 
         return $this;
     }

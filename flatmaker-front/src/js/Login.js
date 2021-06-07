@@ -18,7 +18,7 @@ function Login(){
         const response = await login({
             password: password,
             email: name,
-            '_csrf_token': cookies.load('XSRF-TOKEN'),
+            '_csrf_token': cookies['login'],
         });
         setStatus(response);
         console.log(response);
