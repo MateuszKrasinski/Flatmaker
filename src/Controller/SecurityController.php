@@ -28,6 +28,9 @@ class SecurityController extends AbstractController
         $response = new Response();
         $response->headers->set('Content-Type', 'application/json');
         $response->headers->set('Access-Control-Allow-Origin', '*');
+
+        $response->setContent('some problems');
+
         if ($this->getUser())
             $response->setContent($this->getUser());
         else{

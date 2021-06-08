@@ -69,7 +69,7 @@ function OnBoard() {
                         {
                             projects.length>0&&
                             projects[0]['helps'].map((tech)=>{
-                                return <Item name={tech['name']} photo1={tech['id_from']['id_user']['photo']} photo2={tech['id_to']['id_user']['photo']} />
+                                return <Item name={tech['name']} photo1={tech['id_from']['details']['photo']} photo2={tech['id_to']['details']['photo']} />
                             })
                         }
 

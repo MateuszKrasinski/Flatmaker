@@ -25,3 +25,10 @@ help:
 helpGroup:
   path: /groups/id/help/id
   controller: App\Controller\HelpController::getHelps
+
+authentication_token:
+  path: /authentication_token
+  methods: ['POST']
+
+api_login_check:
+  path: /api/login_check
