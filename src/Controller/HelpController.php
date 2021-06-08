@@ -25,7 +25,7 @@ class HelpController extends AbstractController
 
     public function createHelp(Request $request): Response
     {
-        $data = json_decode($request->getContent(),false);
+            $data = json_decode($request->getContent(),false);
         $response = new Response();
         $response->headers->set('Content-Type', 'application/json');
         $response->headers->set('Access-Control-Allow-Origin', '*');

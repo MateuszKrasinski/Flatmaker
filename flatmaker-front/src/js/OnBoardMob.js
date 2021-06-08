@@ -1,11 +1,8 @@
-import '../css/App.css';
-import '../css/index.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faHome} from '@fortawesome/free-solid-svg-icons'
 import {useHistory} from "react-router";
 import RightBar from "./RightBar";
 import TopBar from "./TopBar";
-import {useMediaQuery} from "react-responsive/src";
 
 function HouseIcon() {
     return <FontAwesomeIcon icon={faHome}/>
@@ -50,7 +47,7 @@ function OnBoard() {
                     <OnBoardHeader/>
                 </main>
             </div>
-                <RightBar/>
+            <RightBar/>
         </div>
 
     );

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import {BrowserRouter as Router, Route} from "react-router-dom";
 
 import Bills from "./js/Bills";
 import OnBoard from "./js/OnBoard";
@@ -13,19 +13,23 @@ import ShoppingList from "./js/ShoppingList";
 import Household from "./js/Household";
 import SetProfile from "./js/SetProfile";
 import Groups from "./js/Groups";
+
+import MediaQuery from 'react-responsive'
+import OnBoardMob from "./js/OnBoardMob";
+
 ReactDOM.render(
     <Router>
         <Route exact path="/">
-            <OnBoard/>
+                <OnBoard/>
         </Route>
         <Route exact path="/login">
-            <Login/>
+                <Login/>
         </Route>
         <Route exact path="/register">
             <Register/>
         </Route>
         <Route path="/shared">
-            <SharedFridge />
+            <SharedFridge/>
         </Route>
         <Route path="/bills">
             <Bills/>

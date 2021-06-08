@@ -64,7 +64,7 @@ class SecurityController extends AbstractController
                 $user,
                 $user->getPassword()
             ));
-
+            $user->setRoles($user->getRoles());
             $em = $this->getDoctrine()->getManager();
             $userDetails = new UserDetails();
             $entityManager = $this->getDoctrine()->getManager();
