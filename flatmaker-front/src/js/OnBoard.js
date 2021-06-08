@@ -1,19 +1,10 @@
-import logo2 from '../img/logo2.PNG';
-
 import '../css/App.css';
 import '../css/index.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faBars, faHome} from '@fortawesome/free-solid-svg-icons'
-import axios from "axios";
-
+import {faHome} from '@fortawesome/free-solid-svg-icons'
 import {useHistory} from "react-router";
 import RightBar from "./RightBar";
 import TopBar from "./TopBar";
-
-
-function HamburgerIcon() {
-    return <FontAwesomeIcon icon={faBars}/>
-}
 
 function HouseIcon() {
     return <FontAwesomeIcon icon={faHome}/>
@@ -48,10 +39,6 @@ function Buttons() {
 
 
 function OnBoard() {
-    let variable=[];
-
-    {axios.get("https://127.0.0.1:8000/api/users.json").then((response)=>{console.log(response);variable=response.data})}
-
     return (
         <div className={"content-container"}>
             <div>

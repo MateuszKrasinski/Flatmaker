@@ -4,8 +4,7 @@ import {faCheckCircle, faPlus} from '@fortawesome/free-solid-svg-icons'
 import TopBar from "./TopBar";
 import RightBar from "./RightBar";
 import React, {useEffect, useState} from "react";
-import {getHelps, postHelp} from "./Api";
-
+import {postHelp,userHelps} from "./Api";
 function SubPage(pros) {
     return (
         <div className={"subpage"}>
@@ -21,29 +20,23 @@ function Item(props) {
         <div className={"item"}>
             <span>{props.name}</span>
             <FontAwesomeIcon icon={faCheckCircle}/>
-            <img src={path+props.photo1} />
-            <img src={path+props.photo2} />
+            <img src={path+props.photo1} alt={""}/>
+            <img src={path+props.photo2} alt={""}/>
         </div>
     )
 }
-
-
-function ItemAdd() {
-    return (
-        <div className={"add-bill"}>
-            <input placeholder={"type bill..."} type="text"/>
-            <FontAwesomeIcon icon={faPlus}/>
-        </div>
-    )
-}
-
 
 function OnBoard() {
-    const [projects, setProjects] = useState([]);
+    const [projects, setProjects] = useState();
+    const [item, setItem] = useState("");
+
     const readProjects = async () => {
-        const getHelp = await getHelps();
+        const getHelp = await userHelps();
         setProjects(getHelp);
+        console.log(projects)
+        console.log(item)
     }
+
     const addItem = async ()=>{
         const getHelp = await postHelp({
             toID: 58,
@@ -54,22 +47,24 @@ function OnBoard() {
             value:15,
             type:1
         },);
-        console.log(getHelp)
+        console.log(getHelp);
+
+
     }
-    const [item, setItem] = useState("");
-    useEffect(() => readProjects(), [projects]);
+
+    useEffect(() => readProjects());
     return (
         <div className={'background-white'}>
             <nav>
                 <TopBar/>
-                <SubPage title={"Shared Fridge"}/>
+                <SubPage title={"Shared Fridge-"}/>
             </nav>
             <main>
                 <div className={"fridge-container"}>
                     <div className={"items-container"}>
                         {
-                            projects.length>0&&
-                            projects[0]['helps'].map((tech)=>{
+                            projects !== undefined &&
+                            projects['helps'].map((tech)=>{
                                 return <Item name={tech['name']} photo1={tech['id_from']['details']['photo']} photo2={tech['id_to']['details']['photo']} />
                             })
                         }

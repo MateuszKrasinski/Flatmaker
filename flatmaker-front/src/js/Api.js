@@ -34,4 +34,16 @@ const postHelp = async (object) => {
     return response.data;
 }
 
-export  {register,login,getHelps, setProfile,setProfileDetails, getUser, postHelp}
+const userGroups = async () => {
+    const response = await axios.get(`https://127.0.0.1:8000/api/group_to_users.json`);
+
+    return response.data;
+}
+
+const userHelps = async ()=>{
+    const response = await axios.get(`https://localhost:8000/api/groups/1.json`);
+
+    return response.data;
+}
+
+export  {register,login,getHelps, setProfile,setProfileDetails, getUser, postHelp, userGroups, userHelps}

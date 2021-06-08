@@ -1,7 +1,7 @@
 import photo from '../img/person1.jpg'
 import '../css/bills.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faBars, faArrowRight, faPlus} from '@fortawesome/free-solid-svg-icons'
+import {faArrowRight, faPlus} from '@fortawesome/free-solid-svg-icons'
 import RightBar from "./RightBar";
 import TopBar from "./TopBar";
 
@@ -19,7 +19,7 @@ function Bill(pros){
 }
 
 let arr = {user: "Jan", count: "12$"}
-function BillsStory(pros){
+function BillsStory(){
     return (
         <div className={"bills-story"}>
                 <Bill user = {arr.user} count ={arr.count}/>

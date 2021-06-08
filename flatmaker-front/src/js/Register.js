@@ -1,6 +1,5 @@
 
 import '../css/App.css';
-import {useHistory} from "react-router";
 import {useState} from "react";
 import RightBar from "./RightBar";
 import TopBar from "./TopBar";
@@ -10,11 +9,10 @@ import {register} from "./Api";
 
 
 function Login() {
-    const history = useHistory();
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
     const [repassword, setRepassword] = useState("");
-    const [response, setStatus] = useState();
+    const [setStatus] = useState();
     const tryRegister = async () => {
         if (password !== repassword) return;
         const response = await register({
@@ -29,8 +27,8 @@ function Login() {
     return (
         <div className={"login-container"}>
             <div className={"option-container"}>
-                <a onClick={() => history.push('/login')}>login</a>
-                <a onClick={() => history.push('/register')} className={"chosen"}>signup</a>
+                <a href={"/login"}>login</a>
+                <a href={"/register"} className={"chosen"}>signup</a>
             </div>
             <div className={"input-container"}>
                 <input

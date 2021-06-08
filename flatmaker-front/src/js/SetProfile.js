@@ -1,10 +1,7 @@
 import '../css/App.css';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faBars, faHome} from '@fortawesome/free-solid-svg-icons'
-import {useHistory} from "react-router";
 import RightBar from "./RightBar";
 import TopBar from "./TopBar";
-import {setProfile, setProfileDetails, getUser, getHelps} from "./Api";
+import {setProfileDetails, getUser} from "./Api";
 import React, {useEffect, useState} from "react";
 
 function Login() {
@@ -27,7 +24,7 @@ function Login() {
         setUser(response);
         console.log(user);
     }
-    useEffect(() => readUser(), []);
+    useEffect(() => readUser());
     return (
         <div className={"login-container"}>
             { user&&

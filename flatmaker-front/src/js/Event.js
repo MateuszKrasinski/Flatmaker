@@ -1,7 +1,5 @@
 import '../css/App.css';
 import '../css/index.css';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faBars} from '@fortawesome/free-solid-svg-icons'
 import Calendar from 'react-calendar';
 import {useState} from "react";
 import TopBar from "./TopBar";
@@ -14,9 +12,6 @@ function SubPage(pros){
             <span>{pros.title}</span>
         </div>
     )
-}
-function HamburgerIcon() {
-    return <FontAwesomeIcon icon={faBars}/>
 }
 
 function MyApp() {

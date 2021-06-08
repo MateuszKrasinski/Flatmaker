@@ -12,6 +12,7 @@ import Register from "./js/Register";
 import ShoppingList from "./js/ShoppingList";
 import Household from "./js/Household";
 import SetProfile from "./js/SetProfile";
+import Groups from "./js/Groups";
 ReactDOM.render(
     <Router>
         <Route exact path="/">
@@ -40,6 +41,9 @@ ReactDOM.render(
         </Route>
         <Route path="/setProfile">
             <SetProfile/>
+        </Route>
+        <Route path="/groups">
+            <Groups/>
         </Route>
     </Router>,
     document.querySelector('body')
