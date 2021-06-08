@@ -1,5 +1,5 @@
 import '../css/App.css';
-import '../css/index.css';
+import '../css/calendar.css';
 import Calendar from 'react-calendar';
 import {useState} from "react";
 import TopBar from "./TopBar";

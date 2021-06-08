@@ -34,8 +34,8 @@ function RightBar() {
                 <Link to='/event'>
                     <li onClick={handleStatusChange}>Calendar</li>
                 </Link>
-                <Link to='/household'>
-                    <li onClick={handleStatusChange}>Household</li>
+                <Link to='/setProfile'>
+                    <li onClick={handleStatusChange}>Profile</li>
                 </Link>
             </ul>
         </div>)

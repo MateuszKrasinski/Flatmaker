@@ -14,9 +14,6 @@ import Household from "./js/Household";
 import SetProfile from "./js/SetProfile";
 import Groups from "./js/Groups";
 
-import MediaQuery from 'react-responsive'
-import OnBoardMob from "./js/OnBoardMob";
-
 ReactDOM.render(
     <Router>
         <Route exact path="/">

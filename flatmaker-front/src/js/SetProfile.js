@@ -20,9 +20,9 @@ function Login() {
         console.log(response);
     };
     const readUser = async () => {
-        const response = await getUser(32);
+        const response = await getUser(58);
         setUser(response);
-        console.log(user);
+        console.log(response);
     }
     useEffect(() => readUser());
     return (
@@ -30,25 +30,25 @@ function Login() {
             { user&&
 
             <div className={"input-container"}>
-                <img src={user['id_user']['photo']} alt=""/>
+                <img src={user['details']['photo']} alt=""/>
                 <input
                     type="text"
-                    placeholder={user['id_user']['name']}
+                    placeholder={user['details']['name']}
                     onChange={(e) => setName(e.target.value)}
                 ></input>
                 <input
                     type="text"
-                    placeholder={user['id_user']['surname']}
+                    placeholder={user['details']['surname']}
                     onChange={(e) => setSurname(e.target.value)}
                 ></input>
                 <input
                     type="text"
-                    placeholder={user['id_user']['phone']}
+                    placeholder={user['details']['phone']}
                     onChange={(e) => setPhone(e.target.value)}
                 ></input>
                 <input
                     type="text"
-                    placeholder={user['id_user']['photo']}
+                    placeholder={user['details']['photo']}
                     onChange={(e) => setPhoto(e.target.value)}
                 ></input>
 
