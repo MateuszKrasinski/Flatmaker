@@ -46,12 +46,13 @@ function OnBoard() {
     }
     const addItem = async ()=>{
         const getHelp = await postHelp({
-            toId: 28,
-            fromID: 29,
-            groupId: 1,
+            toID: 58,
+            fromID: 57,
+            groupID: 1,
             name: "jabłko",
             isActive: true,
-            value:15
+            value:15,
+            type:1
         },);
         console.log(getHelp)
     }

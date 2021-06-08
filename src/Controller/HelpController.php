@@ -25,33 +25,37 @@ class HelpController extends AbstractController
 
     public function createHelp(Request $request): Response
     {
-        $data = json_decode($request->getContent());
-//        $groupID = $data->groupID;
-//        $fromID = $data->fromID;
-//        $toID = $data->toID;
-//        $name = $data->name;
-        $groupID = 1;
-        $fromID = 28;
-        $toID = 29;
-        $name = 'fajna grupa';
+        $data = json_decode($request->getContent(),false);
+        $response = new Response();
+        $response->headers->set('Content-Type', 'application/json');
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+        $groupID = $data->groupID;
+
+        $fromID = $data->fromID;
+
+        $toID = $data->toID;
+        $name = $data->name;
+        $type=$data->type;
+        $value=$data->value;
+//        $groupID = 1;
+//        $fromID = 56;
+//        $toID = 57;
+//        $name = 'item3';
+//        $value = 30;
+//        $type = 1;
         $isActive = false;
-        $value = 20;
-        $type = 1;
+
         $response = new Response();
         $response->headers->set('Content-Type', 'application/json');
         $response->headers->set('Access-Control-Allow-Origin', '*');
         $repositoryUser = $this->getDoctrine()->getRepository(User::class);
         $repositoryGroup = $this->getDoctrine()->getRepository(Group::class);
-        $repositoryHelp = $this->getDoctrine()->getRepository(Help::class);
         $repositoryType = $this->getDoctrine()->getRepository(Type::class);
+
         $userFrom = $repositoryUser->find($fromID);
-        $userFrom->getIdRole()->getRelation();
-        $userFrom->getIdUser()->getRelation();
-
+        $userFrom->getDetails()->getRelation();
         $userTo = $repositoryUser->find($toID);
-        $userTo->getIdRole()->getRelation();
-        $userTo->getIdUser()->getRelation();
-
+        $userTo->getDetails()->getRelation();
         $typeClass = $repositoryType->find($type);
 
         $group = $repositoryGroup->find($groupID);
@@ -64,12 +68,14 @@ class HelpController extends AbstractController
         $help->setName($name);
         $help->setIsActive(false);
         $help->setValue($value);
+
+
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($help);
         $entityManager->flush();
-        $response->setContent(json_encode($help));
-
+        $response->setContent('xD');
         return $response;
+
     }
 
     public function getHelps($id_group = 23): Response
