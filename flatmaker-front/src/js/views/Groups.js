@@ -1,8 +1,8 @@
-import '../css/bills.css';
-import TopBar from "./TopBar";
-import RightBar from "./RightBar";
+import '../../css/bills.css';
+import TopBar from "../components/TopBar";
+import RightBar from "../components/RightBar";
 import React, {useEffect, useState} from "react";
-import {getHelps} from "./Api";
+import {getHelps} from "../api/Api";
 import {useHistory} from "react-router";
 
 function SubPage(pros) {

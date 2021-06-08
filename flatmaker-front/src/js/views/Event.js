@@ -1,9 +1,9 @@
-import '../css/App.css';
-import '../css/calendar.css';
+import '../../css/App.css';
+import '../../css/calendar.css';
 import Calendar from 'react-calendar';
 import {useState} from "react";
-import TopBar from "./TopBar";
-import RightBar from "./RightBar";
+import TopBar from "../components/TopBar";
+import RightBar from "../components/RightBar";
 
 
 function SubPage(pros){

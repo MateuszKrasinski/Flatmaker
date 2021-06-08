@@ -1,9 +1,9 @@
-import photo from '../img/person1.jpg'
-import '../css/bills.css';
+import photo from '../../img/person1.jpg'
+import '../../css/bills.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faArrowRight, faPlus} from '@fortawesome/free-solid-svg-icons'
-import RightBar from "./RightBar";
-import TopBar from "./TopBar";
+import RightBar from "../components/RightBar";
+import TopBar from "../components/TopBar";
 
 
 

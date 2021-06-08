@@ -2,7 +2,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faBars, faTimes} from "@fortawesome/free-solid-svg-icons";
 import {Link} from "react-router-dom";
 import {useState} from "react";
-
+import '../../css/rightnav.css';
 function RightBar() {
     const [clicked, setState] = useState(false);
     function handleStatusChange() {

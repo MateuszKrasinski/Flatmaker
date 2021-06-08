@@ -1,10 +1,10 @@
-import '../css/bills.css';
+import '../../css/bills.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faCheckCircle, faPlus} from '@fortawesome/free-solid-svg-icons'
-import TopBar from "./TopBar";
-import RightBar from "./RightBar";
+import TopBar from "../components/TopBar";
+import RightBar from "../components/RightBar";
 import React, {useEffect, useState} from "react";
-import {postHelp,userHelps} from "./Api";
+import {postHelp,userHelps} from "../api/Api";
 function SubPage(pros) {
     return (
         <div className={"subpage"}>

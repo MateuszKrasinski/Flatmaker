@@ -1,9 +1,9 @@
-import photo from '../img/person2.jpg'
-import '../css/bills.css';
+import photo from '../../img/person2.jpg'
+import '../../css/bills.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faCheckCircle, faTimesCircle} from '@fortawesome/free-solid-svg-icons'
-import TopBar from "./TopBar";
-import RightBar from "./RightBar";
+import TopBar from "../components/TopBar";
+import RightBar from "../components/RightBar";
 
 
 function SubPage(pros){

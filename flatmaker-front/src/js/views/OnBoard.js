@@ -1,9 +1,9 @@
-import '../css/App.css';
+import '../../css/onboard.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faHome} from '@fortawesome/free-solid-svg-icons'
 import {useHistory} from "react-router";
-import RightBar from "./RightBar";
-import TopBar from "./TopBar";
+import RightBar from "../components/RightBar";
+import TopBar from "../components/TopBar";
 
 function HouseIcon() {
     return <FontAwesomeIcon icon={faHome}/>

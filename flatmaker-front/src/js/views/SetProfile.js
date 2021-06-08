@@ -1,7 +1,7 @@
-import '../css/App.css';
-import RightBar from "./RightBar";
-import TopBar from "./TopBar";
-import {setProfileDetails, getUser} from "./Api";
+import '../../css/App.css';
+import RightBar from "../components/RightBar";
+import TopBar from "../components/TopBar";
+import {setProfileDetails, getUser} from "../api/Api";
 import React, {useEffect, useState} from "react";
 
 function Login() {
