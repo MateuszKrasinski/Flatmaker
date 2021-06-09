@@ -4,11 +4,13 @@ import RightBar from "../components/RightBar";
 import TopBar from "../components/TopBar";
 import {login} from "../api/Api";
 import {useCookies} from "react-cookie";
+import {useHistory} from "react-router";
 function Login(){
-    const [cookies] = useCookies(['cookie-name']);
+    const [cookies, setCookie] = useCookies(['cookie-name']);
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
-    const [setStatus] = useState();
+    const [status,setStatus] = useState();
+    const history = useHistory();
     const tryLogin = async () => {
         console.log(cookies);
         const response = await login({
@@ -16,7 +18,11 @@ function Login(){
             email: name,
         });
         setStatus(response);
-        console.log(response);
+        if (status){
+            setCookie("idUser", status, {maxAge: 3600, path: '/' });
+            history.push('/groups')
+        }
+        console.log(cookies)
     };
     return (
         <div className={"login-container"}>

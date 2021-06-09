@@ -33,17 +33,20 @@ const postHelp = async (object) => {
     const response = await axios.post(`https://localhost:8000/help`,object);
     return response.data;
 }
-
+const removeHelp = async (object) => {
+    const response = await axios.post(`https://localhost:8000/removeHelp`,object);
+    return response.data;
+}
 const userGroups = async () => {
     const response = await axios.get(`https://127.0.0.1:8000/api/group_to_users.json`);
 
     return response.data;
 }
 
-const userHelps = async ()=>{
-    const response = await axios.get(`https://localhost:8000/api/groups/1.json`);
+const userHelps = async (id)=>{
+    const response = await axios.get(`https://localhost:8000/api/groups/${id}.json`);
 
     return response.data;
 }
 
-export  {register,login,getHelps, setProfile,setProfileDetails, getUser, postHelp, userGroups, userHelps}
+export  {register,login,getHelps, setProfile,setProfileDetails, getUser, postHelp, userGroups, userHelps, removeHelp}

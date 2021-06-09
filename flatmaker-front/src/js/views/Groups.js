@@ -4,6 +4,7 @@ import RightBar from "../components/RightBar";
 import React, {useEffect, useState} from "react";
 import {getHelps} from "../api/Api";
 import {useHistory} from "react-router";
+import {useCookies} from "react-cookie";
 
 function SubPage(pros) {
     return (
@@ -25,15 +26,17 @@ function Item(props) {
 }
 
 function OnBoard() {
+    const [cookies] = useCookies(['cookie-name']);
     const history = useHistory();
     const [groups, setGroups] = useState([]);
     const readGroup = async () => {
         const group = await getHelps();
         setGroups(group);
         console.log(group);
+        console.log(cookies);
     }
-    const handleOnClick= async () => {
-        history.push('/Shared/'+2);
+    const handleOnClick= async (id) => {
+        history.push('/Shared/'+id  );
     }
     useEffect(() => readGroup(), []);
     return (
@@ -46,7 +49,7 @@ function OnBoard() {
                 {groups.map((tech2) => {
                     return (
                         <div className={"fridge-container"}>
-                            <h1>{tech2['name']}</h1>
+                            <h3>{tech2['name']}</h3>
                             <div className={"items-container"}>
                                 {
                                     groups.length > 0 &&
@@ -60,7 +63,7 @@ function OnBoard() {
                             </div>
                             <div className={"add-bill"}>
                                 <div className={"button-container"}>
-                                    <button name={tech2['id'] } onClick={handleOnClick}>go in</button>
+                                    <button name={tech2['id'] } onClick={(event)=>(handleOnClick(event.target.name))}>go in</button>
                                 </div>
                             </div>
                         </div>)

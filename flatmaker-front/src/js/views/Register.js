@@ -12,13 +12,12 @@ function Login() {
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
     const [repassword, setRepassword] = useState("");
-    const [setStatus] = useState();
+    const [status, setStatus] = useState();
     const tryRegister = async () => {
         if (password !== repassword) return;
         const response = await register({
             email: name,
             password: password,
-            csrf_token:'authenticate'
         });
         setStatus(response);
         console.log(name);

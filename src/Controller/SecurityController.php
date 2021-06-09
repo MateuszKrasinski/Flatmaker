@@ -19,24 +19,21 @@ class SecurityController extends AbstractController
     /**
      * @Route("/login", name="app_login")
      */
-    public function login(AuthenticationUtils $authenticationUtils): Response
+    public function login(Request $request,UserPasswordEncoderInterface $passwordEncoder): Response
     {
-//         if ($this->getUser()) {
-//             return $this->redirectToRoute('target_path');
-//         }
-
+        $data = json_decode($request->getContent(),false);
+        $repositoryUser = $this->getDoctrine()->getRepository(User::class);
         $response = new Response();
         $response->headers->set('Content-Type', 'application/json');
         $response->headers->set('Access-Control-Allow-Origin', '*');
 
         $response->setContent('some problems');
-
-        if ($this->getUser())
-            $response->setContent($this->getUser());
+        $user = $repositoryUser->findOneBy(['email'=>$data->email]) ;
+        if ( $user && $passwordEncoder->isPasswordValid($user, $data->password) ){
+            $response->setContent($user->getId());
+        }
         else{
-            $error = $authenticationUtils->getLastAuthenticationError();
-            $lastUsername = $authenticationUtils->getLastUsername();
-            $response->setContent('some problems');
+            $response->setContent('wrong password');
         }
 
         return $response;

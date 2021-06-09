@@ -4,7 +4,10 @@ import {faCheckCircle, faPlus} from '@fortawesome/free-solid-svg-icons'
 import TopBar from "../components/TopBar";
 import RightBar from "../components/RightBar";
 import React, {useEffect, useState} from "react";
-import {postHelp,userHelps} from "../api/Api";
+import {postHelp, userHelps} from "../api/Api";
+import {useCookies} from "react-cookie";
+import {removeHelp} from "../api/Api";
+
 function SubPage(pros) {
     return (
         <div className={"subpage"}>
@@ -14,38 +17,51 @@ function SubPage(pros) {
 }
 
 
-function Item(props) {
-    const path = "/";
-    return (
-        <div className={"item"}>
-            <span>{props.name}</span>
-            <FontAwesomeIcon icon={faCheckCircle}/>
-            <img src={path+props.photo1} alt={""}/>
-            <img src={path+props.photo2} alt={""}/>
-        </div>
-    )
-}
+
 
 function OnBoard() {
     const [projects, setProjects] = useState();
     const [item, setItem] = useState("");
-
+    const [state, setState] = useState(".normal-img");
+    const [receiver, setReceiver] = useState();
+    const [groupID] = useState(window.location.href.match(/\d+/g)[1]);
+    const [cookies] = useCookies(['cookie-name']);
+    const changeColor =()=>{
+        console.log(state)
+        if (state === ".normal-img")
+            setState('.selected')
+        else setState('.normal-img')
+    }
+    const removedHelp = async (id) => {
+        console.log(id);
+        const remHelp = await removeHelp({
+            'id':id
+        });
+        await readProjects();
+    }
     const readProjects = async () => {
-        const getHelp = await userHelps();
+        const getHelp = await userHelps(groupID);
         setProjects(getHelp);
         console.log(projects)
         console.log(item)
     }
 
-    const addItem = async ()=>{
-        const getHelp = await postHelp({
-            toID: 58,
-            fromID: 57,
-            groupID: 1,
-            name: "jabłko",
+    const addItem = async () => {
+        console.log({toID: receiver,
+            fromID: cookies['idUser'],
+            groupID: 2,
+            name: item,
             isActive: true,
-            value:15,
-            type:1
+            value: 20,
+            type: 1})
+        const getHelp = await postHelp({
+            toID: receiver,
+            fromID: cookies['idUser'],
+            groupID: groupID,
+            name: item,
+            isActive: true,
+            value: 20,
+            type: 1
         },);
         console.log(getHelp);
 
@@ -60,12 +76,21 @@ function OnBoard() {
                 <SubPage title={"Shared Fridge-"}/>
             </nav>
             <main>
+
                 <div className={"fridge-container"}>
                     <div className={"items-container"}>
                         {
                             projects !== undefined &&
-                            projects['helps'].map((tech)=>{
-                                return <Item name={tech['name']} photo1={tech['id_from']['details']['photo']} photo2={tech['id_to']['details']['photo']} />
+                            projects['helps'].map((tech) => {
+                                return (
+                                <div id={tech['id']} className={"item"}>
+                                    <span>{tech['name']}</span>
+                                    <FontAwesomeIcon id={tech['id']} onClick={(e) => removedHelp(tech['id'])} icon={faCheckCircle}/>
+                                    <img src={"/"+tech['id_from']['details']['photo']} alt={""}/>
+                                    <img src={"/"+tech['id_to']['details']['photo']} alt={""}/>
+                                </div>
+                                )
+
                             })
                         }
 
@@ -77,8 +102,16 @@ function OnBoard() {
                             placeholder="type item"
                             onChange={(e) => setItem(e.target.value)}
                         ></input>
-                        <FontAwesomeIcon icon={faPlus} onClick={addItem}/>
+                        <FontAwesomeIcon  icon={faPlus} onClick={addItem}/>
                     </div>
+                </div>
+                <div className={"participants-container"}>
+                    to:
+                    {
+                        projects !== undefined &&
+                        projects['relation'].map((tech) => {
+                            return <img  name={tech['id_user']['id']} className={state} onClick={(e) => setReceiver(e.target.name)} src={"/"+tech['id_user']['details']['photo']} alt=""/>
+                        })}
                 </div>
             </main>
             <RightBar/>

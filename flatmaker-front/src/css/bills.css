@@ -293,3 +293,20 @@ photo-container{
     border-radius: 100%;
 
 }
+
+.participants-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 20vw;
+    height: 60vh;
+}
+
+.participants-container>img, .normal-img{
+    width: 8vw;
+    height: 8vw;
+    border-radius: 100%;
+
+}
+

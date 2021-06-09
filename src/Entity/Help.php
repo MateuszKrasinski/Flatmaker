@@ -20,6 +20,7 @@ class Help
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"help:read","group:read"})
      */
     private $id;
 
