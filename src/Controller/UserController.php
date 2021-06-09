@@ -46,16 +46,11 @@ class UserController extends AbstractController
         $entityManager->persist($user_details);
         $entityManager->flush();
 
-        $role = new Role();
-        $role->setRole("User");
-        $entityManager->persist($role);
-        $entityManager->flush();
         $user = new User();
         $user->setEmail('mail@gmail.com');
-        $user->setIdUser($user_details);
-        $user->setIdRole($role);
+        $user->setDetails($user_details);
         $user->setPassword('password1!');
-        $user->setCreatedAt(new DateTime());
+        $user->setRoles($user->getRoles());
 
         // tell Doctrine you want to (eventually) save the user (no queries yet)
         $entityManager->persist($user);

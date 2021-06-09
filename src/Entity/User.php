@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 
@@ -22,9 +23,9 @@ class User implements UserInterface
 {
     /**
      * @ORM\Id
-     * @ORM\GeneratedValue
+     * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(type="integer")
-     * @Groups({"user:read","group_to_user:read", "help:read","group:read"})
+     * @Groups({"user:read","user:write","group_to_user:read", "help:read","group:read"})
      *
      */
     private $id;
@@ -43,20 +44,22 @@ class User implements UserInterface
      */
     private $relation1;
     /**
-     * @ORM\ManyToOne(targetEntity=Role::class, inversedBy="relation")
+     * @ORM\Column(type="json")
      * @Groups({"user:read","group_to_user:read", "help:read","group:read"})
      */
 
-    private $id_role;
+    private $roles = [];
 
     /**
+     * @ORM\GeneratedValue
      * @ORM\OneToOne(targetEntity=UserDetails::class, cascade={"persist", "remove"})
-     *  @Groups({"user:read","group_to_user:read", "help:read","group:read"})
+     *  @Groups({"user:read","user:write","group_to_user:read", "help:read","group:read"})
      */
-    private $id_user;
+    private $details;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     *@ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      * @Groups({"user:read","group_to_user:read", "help:read","group:read"})
      *
      */
@@ -68,17 +71,12 @@ class User implements UserInterface
      */
     private $password;
 
-    /**
-     * @ORM\Column(type="datetime")
-     * @Groups({"user:read","group_to_user:read", "help:read"})
-     */
-    private $created_at;
-
     public function __construct()
     {
         $this->relation = new ArrayCollection();
         $this->relation_ = new ArrayCollection();
         $this->relation__ = new ArrayCollection();
+        $this->relation1 = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -117,27 +115,15 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getIdRole(): ?Role
+    public function getDetails(): ?UserDetails
     {
-        return $this->id_role;
-    }
-
-    public function setIdRole(?Role $id_role): self
-    {
-        $this->id_role = $id_role;
-
-        return $this;
-    }
-
-    public function getIdUser(): ?UserDetails
-    {
-        return $this->id_user;
+        return $this->details;
 //        return $this->id_user->getRelation();
     }
 
-    public function setIdUser(?UserDetails $id_user): self
+    public function setDetails(?UserDetails $details): self
     {
-        $this->id_user = $id_user;
+        $this->details = $details;
 
         return $this;
     }
@@ -168,21 +154,20 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeInterface
-    {
-        return $this->created_at;
-    }
-
-    public function setCreatedAt(\DateTimeInterface $created_at): self
-    {
-        $this->created_at = $created_at;
-
-        return $this;
-    }
 
     public function getRoles()
     {
-        // TODO: Implement getRoles() method.
+        $roles = [];
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
     }
     /**
      * @see UserInterface
@@ -200,5 +185,35 @@ class User implements UserInterface
     public function eraseCredentials()
     {
         // TODO: Implement eraseCredentials() method.
+    }
+
+    /**
+     * @return Collection|Help[]
+     */
+    public function getRelation1(): Collection
+    {
+        return $this->relation1;
+    }
+
+    public function addRelation1(Help $relation1): self
+    {
+        if (!$this->relation1->contains($relation1)) {
+            $this->relation1[] = $relation1;
+            $relation1->setIdUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRelation1(Help $relation1): self
+    {
+        if ($this->relation1->removeElement($relation1)) {
+            // set the owning side to null (unless already changed)
+            if ($relation1->getIdUser() === $this) {
+                $relation1->setIdUser(null);
+            }
+        }
+
+        return $this;
     }
 }

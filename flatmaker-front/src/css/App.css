@@ -1,172 +1,272 @@
-background-color-peach{
-  background-color: #ffe0d8 !important;
+body {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffe0d8 !important;
 }
-background-color-white{
-  background-color: #FFFFFF !important;
+
+.logo {
+    position: relative;
+    top: 0px;
+    left: 100px;
+    width: 300px;
+    height: 50px;
 }
 
 
-body{
-  display: flex;
-  width: 100vw;
-  height: 100vh;
-  align-items: center;
-  justify-content: center;
-  background-color: #ffe0d8 !important;
+nav {
+    margin-top: 5vh;
+    display: flex;
+    height: 10vh;
+    width: 80vw;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0 !important;
 }
 
-.logo{
-  position: relative;
-  top: 0px;
-  left: 100px;
-  width: 300px;
-  height: 50px;
+main {
+    display: flex;
+    height: 90vh;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
 }
 
-nav{
-  margin-top: 5vh;
-  display: flex;
-  height: 10vh;
-  width: 80vw;
-  align-items: center;
-  justify-content: center;
-  margin-right: 0 !important;
-}
-main{
-  display: flex;
-  height: 90vh;
-  width: 100vw;
-  align-items: center;
-  justify-content: center;
-}
-.onboard-header{
-  display: flex;
-  flex-direction: column;
-  width: 100vw;
-  height: 90vh;
-  align-items: center;
-  justify-content: center;
-}
-.onboard-header>svg{
-  display: flex;
-
-  font-size: 70px;
-}
-h1, h2{
-  margin: 1vh;
-}
-.top-nav{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 90vw;
-  height: 10vh;
+.top-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90vw;
+    height: 10vh;
 }
 
-.button-container{
-  width: 30vw;
-  height: 10vh;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+@media only screen and (min-width: 601px) {
+    .button-container, .input-container, .option-container {
+        width: 30vw;
+        height: 10vh;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .button-container > button {
+        height: 7vh;
+        text-align: center;
+        font: normal normal normal 20px/26px Roboto Slab;
+        letter-spacing: 0px;
+        color: #FFFFFF;
+        opacity: 1;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 12vw;
+        background: #000000 0% 0% no-repeat padding-box;
+        border-radius: 30px;
+    }
 }
-.button-container>button{
-  height: 7vh;
-  width: fit-content;
-  text-align: center;
-  font: normal normal normal 20px/26px Roboto Slab;
-  letter-spacing: 0px;
-  color: #FFFFFF;
-  background-color: #000000;
-  opacity: 1;
-  border-radius: 32px;
-  border: none;
+
+@media only screen and (max-width: 600px) {
+    .logo {
+        position: relative;
+        top: 0px;
+        left: 100px;
+        height: 60px;
+        width: 200px;
+    }
+
+    .button-container {
+        display: flex;
+        width: 100vw;
+        justify-content: center;
+        align-items: center;
+    }
+
+    button {
+        color: white;
+        width: 30vw;
+        height: 8vh;
+        background: #000000 0% 0% no-repeat padding-box;
+        border-radius: 30px;
+    }
 }
-
-
-
 
 /*----------------------------------*/
-.login-container{
-  flex-direction: column;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 70vh;
-  width: 25vw;
-  background: #FFFFFF 0% 0% no-repeat padding-box;
-  border: 0.5px solid #6E6E77;
-  border-radius: 109px;
-  opacity: 1;
-  text-align: center;
-  font: normal normal normal 30px/40px Segoe UI;
-  letter-spacing: 0px;
-  color: #6E6E77;
-}
+@media only screen and (min-width: 601px) {
+    .login-container {
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 70vh;
+        width: 25vw;
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        border: 0.5px solid #6E6E77;
+        border-radius: 109px;
+        opacity: 1;
+        text-align: center;
+        font: normal normal normal 30px/40px Segoe UI;
+        letter-spacing: 0px;
+        color: #6E6E77;
+    }
 
-.button-container, .input-container, .option-container{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-.input-container{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 40%;
-}
+    .input-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 40%;
+    }
 
-.input-container>input{
-  width: 20vw;
-  height: 10vh;
-  margin-top: 2vh;
-  background: #FAFAFA 0% 0% no-repeat padding-box;
-  border: none;
-  text-align: center;
-  font: normal normal normal 20px/30px Segoe UI;
-  letter-spacing: 0;
-  color: #6E6E77;
-}
-.button-container>button{
-  width: 12vw;
+    .input-container > img {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 40%;
+        border-radius: 100%;
+    }
 
-  background: #000000 0% 0% no-repeat padding-box;
-  border-radius: 30px;
-}
-.option-container{
-  display: flex;
-  height: 20%;
-  width: 65%;
-  justify-content: space-around;
-  text-decoration: underline;
-  text-transform: uppercase;
-  font-size: 20px;
-}
-.chosen{
-  text-decoration: underline;
-  text-decoration-color: #ffe0d8;
+    .input-container > input {
+        width: 20vw;
+        height: 10vh;
+        margin-top: 2vh;
+        background: #FAFAFA 0% 0% no-repeat padding-box;
+        border: none;
+        text-align: center;
+        font: normal normal normal 20px/30px Segoe UI;
+        letter-spacing: 0;
+        color: #6E6E77;
+    }
+    .button-container {
+        display: flex;
+        height: 30%;
+    }
 
 }
-.button-container{
-  display: flex;
-  height:30%;
-}
-button:hover{
-  cursor: pointer;
+
+@media only screen and (max-width: 601px) {
+    .login-container {
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 70vh;
+        width: 80vw;
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        border: 0.5px solid #6E6E77;
+        border-radius: 109px;
+        opacity: 1;
+        text-align: center;
+        font: normal normal normal 30px/40px Segoe UI;
+        letter-spacing: 0px;
+        color: #6E6E77;
+    }
+
+    .input-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 40%;
+        width: 80vw;
+    }
+
+    .input-container > input {
+        width: 70vw;
+        height: 10vh;
+        margin-top: 2vh;
+        background: #FAFAFA 0% 0% no-repeat padding-box;
+        border: none;
+        text-align: center;
+        font: normal normal normal 20px/30px Segoe UI;
+        letter-spacing: 0;
+        color: #6E6E77;
+    }
+
+    .input-container > img {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 15vh;
+        border-radius: 100%;
+    }
+
+    .button-container {
+        margin-top: 10vh;
+    }
+
 }
 
-.invisible{
-  visibility: hidden;
-}
-.visible{
-  visibility: visible;
+
+.option-container {
+    display: flex;
+    height: 20%;
+    width: 65%;
+    justify-content: space-around;
+    text-decoration: underline;
+    text-transform: uppercase;
+    font-size: 20px;
 }
 
-.background-white{
-  background-color: white;
+.chosen {
+    text-decoration: underline;
+    text-decoration-color: #ffe0d8;
+
 }
-.background-grey{
-  background-color: #FAFAFA7D
+
+
+
+button:hover {
+    cursor: pointer;
 }
+
+.invisible {
+    visibility: hidden;
+}
+
+.visible {
+    visibility: visible;
+}
+
+.background-white {
+    background-color: white;
+}
+
+.background-grey {
+    background-color: #FAFAFA7D
+}
+
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: flex;
+    flex-direction: row;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.content-container {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+}
+
+
+

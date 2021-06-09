@@ -20,6 +20,7 @@ class Help
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"help:read","group:read"})
      */
     private $id;
 
@@ -47,6 +48,23 @@ class Help
      *
      */
     private $id_group;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Groups({"help:read","group:read"})
+     */
+    private $name;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"help:read","group:read"})
+     */
+    private $value;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isActive;
 
     public function getId(): ?int
     {
@@ -99,6 +117,42 @@ class Help
     public function setIdGroup(?Group $id_group): self
     {
         $this->id_group= $id_group;
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getValue(): ?int
+    {
+        return $this->value;
+    }
+
+    public function setValue(?int $value): self
+    {
+        $this->value = $value;
+
+        return $this;
+    }
+
+    public function getIsActive(): ?bool
+    {
+        return $this->isActive;
+    }
+
+    public function setIsActive(bool $isActive): self
+    {
+        $this->isActive = $isActive;
 
         return $this;
     }

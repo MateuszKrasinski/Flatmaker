@@ -1,15 +1,11 @@
 
-
-register:
-  path: /register
+register_app2:
+  path: /login2
+  controller: App\Controller\UserController::createUser
+register_app:
+  path: /register2
   controller: App\Controller\UserController::createUser
 
-login:
-  path: /login
-  controller: App\Controller\UserController::login
-loginapi:
-  path: /users/{id}.{_format}
-  controller: App\Controller\UserController::login
 groups:
   path: /groups/new
   controller: App\Controller\GroupController::createGroup
@@ -18,14 +14,25 @@ group:
   path: /groups/getGroup
   controller: App\Controller\GroupController::getGroup
 
+userGroups:
+  path: /groups/userGroups
+  controller: App\Controller\GroupToUserController::getUserGroup
+
 groupss:
   path: /groups/
   controller: App\Controller\GroupController::getGroups
 
 help:
-  path: /groups/id/help/
+  path: /help
   controller: App\Controller\HelpController::createHelp
+removeHelp:
+  path: /removeHelp
+  controller: App\Controller\HelpController::removeHelp
 
-helpGroup:
-  path: /groups/id/help/id
-  controller: App\Controller\HelpController::getHelps
+
+authentication_token:
+  path: /authentication_token
+  methods: ['POST']
+
+api_login_check:
+  path: /api/login_check
