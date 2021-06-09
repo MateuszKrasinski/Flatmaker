@@ -47,13 +47,6 @@ function OnBoard() {
     }
 
     const addItem = async () => {
-        console.log({toID: receiver,
-            fromID: cookies['idUser'],
-            groupID: 2,
-            name: item,
-            isActive: true,
-            value: 20,
-            type: 1})
         const getHelp = await postHelp({
             toID: receiver,
             fromID: cookies['idUser'],

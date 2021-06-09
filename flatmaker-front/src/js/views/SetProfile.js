@@ -15,8 +15,8 @@ function Login() {
             name: name,
             surname: surname,
             phone: phone,
-            photo: photo
-        }, 4);
+            photo: user['details']['photo']
+        }, 2);
         console.log(response);
     };
     const readUser = async () => {
@@ -47,7 +47,7 @@ function Login() {
                     onChange={(e) => setPhone(e.target.value)}
                 ></input>
                 <input
-                    type="text"
+                    type="hidden"
                     placeholder={user['details']['photo']}
                     onChange={(e) => setPhoto(e.target.value)}
                 ></input>
